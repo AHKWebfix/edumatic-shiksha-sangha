@@ -188,7 +188,7 @@ const TeachersStaffPage = () => {
                   <h3 className="font-semibold text-primary mb-1">{staff.name}</h3>
                   <p className="text-sm text-muted-foreground mb-1">{staff.position}</p>
                   <p className="text-xs text-muted-foreground mb-2">{staff.department}</p>
-                  <Badge variant="outline" size="sm">{staff.experience}</Badge>
+                  <Badge variant="outline">{staff.experience}</Badge>
                 </CardContent>
               </Card>
             ))}
