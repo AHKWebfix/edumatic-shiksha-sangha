@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Globe, Facebook, Youtube, Clock } from "lucide-react";
 
@@ -16,21 +15,21 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-primary to-primary/90 text-white">
-      <div className="container mx-auto py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+      <div className="container mx-auto py-12 sm:py-16 px-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:gap-8">
           {/* School Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3 mb-6">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="flex items-center space-x-3 mb-4 sm:mb-6">
               <div className="bg-white/20 p-2 rounded-full">
-                <img src="/placeholder.svg" alt="Logo" className="h-8 w-8" />
+                <img src="/placeholder.svg" alt="Logo" className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">এডুমেটিক স্কুল</h3>
-                <p className="text-sm opacity-90">অ্যান্ড কলেজ</p>
+                <h3 className="text-lg sm:text-xl font-bold">এডুমেটিক স্কুল</h3>
+                <p className="text-xs sm:text-sm opacity-90">অ্যান্ড কলেজ</p>
               </div>
             </div>
             
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-white/80 leading-relaxed text-sm sm:text-base">
               শিক্ষায় উন্নতি, চরিত্রে মাধুর্য - এই মূলমন্ত্র নিয়ে আমরা প্রতিটি শিক্ষার্থীর 
               সুপ্ত প্রতিভা বিকাশে নিবেদিত। আধুনিক শিক্ষা ব্যবস্থা ও ঐতিহ্যবাহী মূল্যবোধের 
               সমন্বয়ে গড়ছি আগামীর বাংলাদেশ।
@@ -39,21 +38,21 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a href="#" className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
-                <Globe className="h-5 w-5" />
+                <Globe className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">দ্রুত লিঙ্ক</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">দ্রুত লিঙ্ক</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a 
@@ -69,8 +68,8 @@ const Footer = () => {
 
           {/* Academic Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">একাডেমিক তথ্য</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">একাডেমিক তথ্য</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {academicInfo.map((link, index) => (
                 <li key={index}>
                   <a 
@@ -86,10 +85,10 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6">যোগাযোগ</h4>
-            <div className="space-y-4">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">যোগাযোগ</h4>
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-white/60" />
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-white/60" />
                 <div>
                   <p className="text-white/80 text-sm leading-relaxed">
                     ১২৩ শিক্ষা সড়ক<br />
@@ -100,17 +99,17 @@ const Footer = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-white/60" />
-                <span className="text-white/80 text-sm">০১৭৮৮-৯৯৮৮৭ে</span>
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white/60" />
+                <span className="text-white/80 text-sm">০১৭৮৮-৯৯৮৮৭৭</span>
               </div>
               
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-white/60" />
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-white/60" />
                 <span className="text-white/80 text-sm">info@edumatic.edu.bd</span>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 mt-0.5 text-white/60" />
+                <Clock className="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-white/60" />
                 <div className="text-white/80 text-sm">
                   <p>সোম - বৃহ: ৮:০০ - ৪:০০</p>
                   <p>শুক্র: ৮:০০ - ১২:০০</p>
@@ -122,13 +121,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 mt-12 pt-8">
+        <div className="border-t border-white/20 mt-8 sm:mt-12 pt-6 sm:pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-white/60 text-sm text-center md:text-left">
               © ২০২৪ এডুমেটিক স্কুল অ্যান্ড কলেজ। সকল অধিকার সংরক্ষিত।
             </p>
             
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex items-center space-x-4 sm:space-x-6 text-sm">
               <a href="#" className="text-white/60 hover:text-white transition-colors">
                 প্রাইভেসি পলিসি
               </a>
@@ -141,7 +140,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="text-center mt-6">
+          <div className="text-center mt-4 sm:mt-6">
             <p className="text-white/40 text-xs">
               Design & Developed by Ahasanul Haque Khairul
             </p>
@@ -153,4 +152,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
