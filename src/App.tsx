@@ -24,6 +24,10 @@ import ExamFeesRoutinePage from "./pages/exams/ExamFeesRoutinePage";
 import ExamResultsPage from "./pages/exams/ExamResultsPage";
 import PublicExamResultsPage from "./pages/exams/PublicExamResultsPage";
 import NoticeBoardPage from "./pages/NoticeBoardPage";
+import GalleryPage from "./pages/GalleryPage";
+import AttendancePage from "./pages/AttendancePage";
+import MagazinePage from "./pages/MagazinePage";
+import ContactPage from "./pages/ContactPage";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +57,10 @@ const App = () => (
           <Route path="/exams/results" element={<ExamResultsPage />} />
           <Route path="/exams/public-results" element={<PublicExamResultsPage />} />
           <Route path="/noticeboard" element={<NoticeBoardPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/attendance" element={<AttendancePage />} />
+          <Route path="/magazine" element={<MagazinePage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

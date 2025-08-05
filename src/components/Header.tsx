@@ -87,17 +87,17 @@ const Header = () => {
     href: "#others",
     submenu: [{
       title: "গ্যালারি",
-      href: "#gallery"
+      href: "/gallery"
     }, {
       title: "হাজিরা তথ্য",
-      href: "#attendance"
+      href: "/attendance"
     }, {
       title: "প্রতিষ্ঠান স্মরণিকা",
-      href: "#magazine"
+      href: "/magazine"
     }]
   }, {
     title: "যোগাযোগ",
-    href: "#contact"
+    href: "/contact"
   }];
 
   return (
