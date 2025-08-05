@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-
 const Header = () => {
   const menuItems = [{
     title: "হোম",
@@ -29,16 +28,16 @@ const Header = () => {
     href: "#administration",
     submenu: [{
       title: "প্রধান শিক্ষক",
-      href: "/administration/principal"
+      href: "#principal"
     }, {
       title: "শিক্ষক ও স্টাফবৃন্দ",
-      href: "/administration/staff"
+      href: "#staff"
     }, {
       title: "ম্যানেজিং কমিটি",
-      href: "/administration/committee"
+      href: "#committee"
     }, {
       title: "কৃতি শিক্ষার্থী",
-      href: "/administration/alumni"
+      href: "#alumni"
     }]
   }, {
     title: "ভর্তি তথ্য",
@@ -99,7 +98,6 @@ const Header = () => {
     title: "যোগাযোগ",
     href: "#contact"
   }];
-
   return <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
       {/* Top Info Bar */}
       <div className="bg-slate-800/90 py-2">
@@ -183,5 +181,4 @@ const Header = () => {
       </div>
     </header>;
 };
-
 export default Header;
