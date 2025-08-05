@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Globe, Facebook, Youtube, Clock } from "lucide-react";
 
@@ -142,7 +143,7 @@ const Footer = () => {
           
           <div className="text-center mt-6">
             <p className="text-white/40 text-xs">
-              প্রযুক্তিগত সহায়তায়: এডুমেটিক টেক টিম
+              Design & Developed by Ahasanul Haque Khairul
             </p>
           </div>
         </div>
@@ -152,3 +153,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
