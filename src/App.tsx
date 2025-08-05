@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,9 @@ import PrincipalPage from "./pages/administration/PrincipalPage";
 import TeachersStaffPage from "./pages/administration/TeachersStaffPage";
 import ManagingCommitteePage from "./pages/administration/ManagingCommitteePage";
 import AlumniPage from "./pages/administration/AlumniPage";
+import AdmissionFormPage from "./pages/admission/AdmissionFormPage";
+import AdmissionFeesPage from "./pages/admission/AdmissionFeesPage";
+import StudentEvaluationPage from "./pages/admission/StudentEvaluationPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,9 @@ const App = () => (
           <Route path="/administration/teachers" element={<TeachersStaffPage />} />
           <Route path="/administration/committee" element={<ManagingCommitteePage />} />
           <Route path="/administration/alumni" element={<AlumniPage />} />
+          <Route path="/admission/form" element={<AdmissionFormPage />} />
+          <Route path="/admission/fees" element={<AdmissionFeesPage />} />
+          <Route path="/admission/evaluation" element={<StudentEvaluationPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

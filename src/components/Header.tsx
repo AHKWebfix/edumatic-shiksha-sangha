@@ -1,3 +1,4 @@
+
 import { Menu, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -45,13 +46,13 @@ const Header = () => {
     href: "#admission",
     submenu: [{
       title: "ভর্তি ফর্ম ও নিয়মাবলী",
-      href: "#admission-form"
+      href: "/admission/form"
     }, {
       title: "ভর্তি ও মাসিক ফি",
-      href: "#fees"
+      href: "/admission/fees"
     }, {
       title: "শিক্ষার্থীর মূল্যায়ন",
-      href: "#evaluation"
+      href: "/admission/evaluation"
     }]
   }, {
     title: "একাডেমিক",
