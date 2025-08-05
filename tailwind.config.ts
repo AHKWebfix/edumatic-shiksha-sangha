@@ -15,12 +15,37 @@ export default {
 			center: true,
 			padding: '2rem',
 			screens: {
-				'2xl': '1400px'
+				'2xl': '1400px',
+				'3xl': '1600px',
+				'4xl': '1800px'
 			}
 		},
 		extend: {
+			maxWidth: {
+				'8xl': '88rem',
+				'9xl': '96rem',
+			},
 			fontFamily: {
 				'anek-bangla': ['Anek Bangla', 'sans-serif'],
+			},
+			fontSize: {
+				'xs': ['0.8rem', { lineHeight: '1.4' }],
+				'sm': ['0.9rem', { lineHeight: '1.5' }],
+				'base': ['1rem', { lineHeight: '1.6' }],
+				'lg': ['1.15rem', { lineHeight: '1.6' }],
+				'xl': ['1.3rem', { lineHeight: '1.7' }],
+				'2xl': ['1.6rem', { lineHeight: '1.7' }],
+				'3xl': ['2rem', { lineHeight: '1.7' }],
+				'4xl': ['2.5rem', { lineHeight: '1.2' }],
+				'5xl': ['3.2rem', { lineHeight: '1.1' }],
+			},
+			fontWeight: {
+				'light': '300',
+				'normal': '400',
+				'medium': '500',
+				'semibold': '600',
+				'bold': '700',
+				'extrabold': '800',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
