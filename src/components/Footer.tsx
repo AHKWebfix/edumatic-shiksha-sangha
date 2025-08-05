@@ -24,12 +24,12 @@ const Footer = () => {
                 <img src="/placeholder.svg" alt="Logo" className="h-8 w-8" />
               </div>
               <div>
-                <h3 className="text-2xl font-extrabold">এডুমেটিক স্কুল</h3>
-                <p className="text-lg opacity-90">অ্যান্ড কলেজ</p>
+                <h3 className="text-xl font-bold">এডুমেটিক স্কুল</h3>
+                <p className="text-sm opacity-90">অ্যান্ড কলেজ</p>
               </div>
             </div>
             
-            <p className="text-white/80 leading-relaxed text-lg font-bold">
+            <p className="text-white/80 leading-relaxed">
               শিক্ষায় উন্নতি, চরিত্রে মাধুর্য - এই মূলমন্ত্র নিয়ে আমরা প্রতিটি শিক্ষার্থীর 
               সুপ্ত প্রতিভা বিকাশে নিবেদিত। আধুনিক শিক্ষা ব্যবস্থা ও ঐতিহ্যবাহী মূল্যবোধের 
               সমন্বয়ে গড়ছি আগামীর বাংলাদেশ।
@@ -51,13 +51,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-2xl font-extrabold mb-6">দ্রুত লিঙ্ক</h4>
+            <h4 className="text-lg font-bold mb-6">দ্রুত লিঙ্ক</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-white/80 hover:text-white transition-colors text-lg font-bold"
+                    className="text-white/80 hover:text-white transition-colors text-sm"
                   >
                     {link}
                   </a>
@@ -68,13 +68,13 @@ const Footer = () => {
 
           {/* Academic Links */}
           <div>
-            <h4 className="text-2xl font-extrabold mb-6">একাডেমিক তথ্য</h4>
+            <h4 className="text-lg font-bold mb-6">একাডেমিক তথ্য</h4>
             <ul className="space-y-3">
               {academicInfo.map((link, index) => (
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-white/80 hover:text-white transition-colors text-lg font-bold"
+                    className="text-white/80 hover:text-white transition-colors text-sm"
                   >
                     {link}
                   </a>
@@ -85,12 +85,12 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-2xl font-extrabold mb-6">যোগাযোগ</h4>
+            <h4 className="text-lg font-bold mb-6">যোগাযোগ</h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 mt-0.5 text-white/60" />
                 <div>
-                  <p className="text-white/80 text-lg leading-relaxed font-bold">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     ১২৩ শিক্ষা সড়ক<br />
                     ধানমন্ডি, ঢাকা - ১২০৫<br />
                     বাংলাদেশ
@@ -100,17 +100,17 @@ const Footer = () => {
               
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-white/60" />
-                <span className="text-white/80 text-lg font-bold">০১৭৮৮-৯৯৮৮৭৭</span>
+                <span className="text-white/80 text-sm">০১৭৮৮-৯৯৮৮৭ে</span>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-white/60" />
-                <span className="text-white/80 text-lg font-bold">info@edumatic.edu.bd</span>
+                <span className="text-white/80 text-sm">info@edumatic.edu.bd</span>
               </div>
               
               <div className="flex items-start space-x-3">
                 <Clock className="h-5 w-5 mt-0.5 text-white/60" />
-                <div className="text-white/80 text-lg font-bold">
+                <div className="text-white/80 text-sm">
                   <p>সোম - বৃহ: ৮:০০ - ৪:০০</p>
                   <p>শুক্র: ৮:০০ - ১২:০০</p>
                   <p>শনি: বন্ধ</p>
@@ -123,29 +123,26 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-white/60 text-lg text-center md:text-left font-bold">
+            <p className="text-white/60 text-sm text-center md:text-left">
               © ২০২৪ এডুমেটিক স্কুল অ্যান্ড কলেজ। সকল অধিকার সংরক্ষিত।
             </p>
             
-            <div className="flex items-center space-x-6 text-lg">
-              <a href="#" className="text-white/60 hover:text-white transition-colors font-bold">
+            <div className="flex items-center space-x-6 text-sm">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
                 প্রাইভেসি পলিসি
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors font-bold">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
                 শর্তাবলী
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors font-bold">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">
                 সহায়তা
               </a>
             </div>
           </div>
           
           <div className="text-center mt-6">
-            <p className="text-white/50 text-base font-bold">
+            <p className="text-white/40 text-xs">
               প্রযুক্তিগত সহায়তায়: এডুমেটিক টেক টিম
-            </p>
-            <p className="text-white/60 text-lg font-extrabold mt-2">
-              Design & Developed by Ahasanul Haque Khairul
             </p>
           </div>
         </div>
