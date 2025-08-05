@@ -114,9 +114,9 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Desktop Navigation with proper positioning */}
+        {/* Desktop Navigation with fixed submenu behavior */}
         <div className="hidden xl:flex">
-          <NavigationMenu className="z-50">
+          <NavigationMenu>
             <NavigationMenuList className="space-x-1">
               {menuItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
@@ -125,8 +125,8 @@ const Header = () => {
                       <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 text-white font-bold text-base px-3 py-2 data-[state=open]:bg-white/10">
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="min-w-max p-0">
-                        <div className="w-72 p-4 bg-white border border-gray-200 shadow-lg rounded-md">
+                      <NavigationMenuContent className="absolute top-full left-0 mt-2 z-[9999]">
+                        <div className="w-72 p-4 bg-white border border-gray-200 shadow-xl rounded-md">
                           {item.submenu.map((subItem, subIndex) => (
                             <NavigationMenuLink
                               key={subIndex}
