@@ -10,6 +10,10 @@ import InstituteHistoryPage from "./pages/about/InstituteHistoryPage";
 import InstituteOverview from "./pages/about/InstituteOverview";
 import RecognitionSeats from "./pages/about/RecognitionSeats";
 import Infrastructure from "./pages/about/Infrastructure";
+import PrincipalPage from "./pages/administration/PrincipalPage";
+import TeachersStaffPage from "./pages/administration/TeachersStaffPage";
+import ManagingCommitteePage from "./pages/administration/ManagingCommitteePage";
+import AlumniPage from "./pages/administration/AlumniPage";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +29,10 @@ const App = () => (
           <Route path="/about/overview" element={<InstituteOverview />} />
           <Route path="/about/recognition" element={<RecognitionSeats />} />
           <Route path="/about/facilities" element={<Infrastructure />} />
+          <Route path="/administration/principal" element={<PrincipalPage />} />
+          <Route path="/administration/teachers" element={<TeachersStaffPage />} />
+          <Route path="/administration/committee" element={<ManagingCommitteePage />} />
+          <Route path="/administration/alumni" element={<AlumniPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

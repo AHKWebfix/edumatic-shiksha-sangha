@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 const Header = () => {
   const menuItems = [{
     title: "হোম",
@@ -28,16 +29,16 @@ const Header = () => {
     href: "#administration",
     submenu: [{
       title: "প্রধান শিক্ষক",
-      href: "#principal"
+      href: "/administration/principal"
     }, {
       title: "শিক্ষক ও স্টাফবৃন্দ",
-      href: "#staff"
+      href: "/administration/teachers"
     }, {
       title: "ম্যানেজিং কমিটি",
-      href: "#committee"
+      href: "/administration/committee"
     }, {
       title: "কৃতি শিক্ষার্থী",
-      href: "#alumni"
+      href: "/administration/alumni"
     }]
   }, {
     title: "ভর্তি তথ্য",
@@ -98,7 +99,9 @@ const Header = () => {
     title: "যোগাযোগ",
     href: "#contact"
   }];
-  return <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
+
+  return (
+    <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
       {/* Top Info Bar */}
       <div className="bg-slate-800/90 py-2">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm font-medium px-4 gap-2 sm:gap-0">
@@ -136,23 +139,31 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden xl:flex items-center space-x-1">
-          {menuItems.map((item, index) => <div key={index} className="relative">
-              {item.submenu ? <DropdownMenu>
+          {menuItems.map((item, index) => (
+            <div key={index} className="relative">
+              {item.submenu ? (
+                <DropdownMenu>
                   <DropdownMenuTrigger className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
                     {item.title}
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-64 bg-white border border-gray-200 shadow-lg">
-                    {item.submenu.map((subItem, subIndex) => <DropdownMenuItem key={subIndex} asChild>
+                    {item.submenu.map((subItem, subIndex) => (
+                      <DropdownMenuItem key={subIndex} asChild>
                         <Link to={subItem.href} className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors cursor-pointer">
                           {subItem.title}
                         </Link>
-                      </DropdownMenuItem>)}
+                      </DropdownMenuItem>
+                    ))}
                   </DropdownMenuContent>
-                </DropdownMenu> : <Link to={item.href} className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
+                </DropdownMenu>
+              ) : (
+                <Link to={item.href} className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
                   {item.title}
-                </Link>}
-            </div>)}
+                </Link>
+              )}
+            </div>
+          ))}
         </nav>
 
         {/* Mobile Menu */}
@@ -164,21 +175,29 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-72 sm:w-80">
             <nav className="flex flex-col space-y-2 mt-8">
-              {menuItems.map((item, index) => <div key={index}>
+              {menuItems.map((item, index) => (
+                <div key={index}>
                   <Link to={item.href} className="flex items-center justify-between text-foreground hover:text-primary transition-colors font-semibold py-3 text-sm sm:text-base">
                     {item.title}
                     {item.submenu && <ChevronDown className="h-4 w-4" />}
                   </Link>
-                  {item.submenu && <div className="ml-4 space-y-1">
-                      {item.submenu.map((subItem, subIndex) => <Link key={subIndex} to={subItem.href} className="block text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary py-2">
+                  {item.submenu && (
+                    <div className="ml-4 space-y-1">
+                      {item.submenu.map((subItem, subIndex) => (
+                        <Link key={subIndex} to={subItem.href} className="block text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary py-2">
                           {subItem.title}
-                        </Link>)}
-                    </div>}
-                </div>)}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </nav>
           </SheetContent>
         </Sheet>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;
