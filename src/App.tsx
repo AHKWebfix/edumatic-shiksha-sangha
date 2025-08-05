@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,6 +20,10 @@ import StudentEvaluationPage from "./pages/admission/StudentEvaluationPage";
 import ClassRoutinePage from "./pages/academics/ClassRoutinePage";
 import SyllabusPage from "./pages/academics/SyllabusPage";
 import AcademicCalendarPage from "./pages/academics/AcademicCalendarPage";
+import ExamFeesRoutinePage from "./pages/exams/ExamFeesRoutinePage";
+import ExamResultsPage from "./pages/exams/ExamResultsPage";
+import PublicExamResultsPage from "./pages/exams/PublicExamResultsPage";
+import NoticeBoardPage from "./pages/NoticeBoardPage";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +49,10 @@ const App = () => (
           <Route path="/academics/routine" element={<ClassRoutinePage />} />
           <Route path="/academics/syllabus" element={<SyllabusPage />} />
           <Route path="/academics/calendar" element={<AcademicCalendarPage />} />
+          <Route path="/exams/fees-routine" element={<ExamFeesRoutinePage />} />
+          <Route path="/exams/results" element={<ExamResultsPage />} />
+          <Route path="/exams/public-results" element={<PublicExamResultsPage />} />
+          <Route path="/noticeboard" element={<NoticeBoardPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

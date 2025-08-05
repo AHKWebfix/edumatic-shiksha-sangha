@@ -1,4 +1,3 @@
-
 import { Menu, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -72,17 +71,17 @@ const Header = () => {
     href: "#exams",
     submenu: [{
       title: "পরীক্ষার ফি ও রুটিন",
-      href: "#exam-routine"
+      href: "/exams/fees-routine"
     }, {
       title: "পরীক্ষার ফলাফল",
-      href: "#results"
+      href: "/exams/results"
     }, {
       title: "পাবলিক পরীক্ষার ফলাফল",
-      href: "#public-results"
+      href: "/exams/public-results"
     }]
   }, {
     title: "নোটিশবোর্ড",
-    href: "#notices"
+    href: "/noticeboard"
   }, {
     title: "অন্যান্য",
     href: "#others",
