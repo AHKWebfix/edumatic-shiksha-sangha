@@ -10,7 +10,7 @@ const HeroSection = () => {
           {/* Hero Image */}
           <div className="relative">
             <img 
-              src="/lovable-uploads/83209945-14b6-4a4c-b7f6-ef785fc7faec.png"
+              src="https://mlafpij6mnr2.i.optimole.com/cb:XF2P.61337/w:auto/h:auto/q:mauto/f:best/https://svhs.edu.bd/wp-content/uploads/2023/10/3.webp"
               alt="এডুমেটিক স্কুল ক্যাম্পাস"
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
             />
