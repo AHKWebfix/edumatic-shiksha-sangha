@@ -16,6 +16,9 @@ import AlumniPage from "./pages/administration/AlumniPage";
 import AdmissionFormPage from "./pages/admission/AdmissionFormPage";
 import AdmissionFeesPage from "./pages/admission/AdmissionFeesPage";
 import StudentEvaluationPage from "./pages/admission/StudentEvaluationPage";
+import ClassRoutinePage from "./pages/academics/ClassRoutinePage";
+import SyllabusPage from "./pages/academics/SyllabusPage";
+import AcademicCalendarPage from "./pages/academics/AcademicCalendarPage";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,9 @@ const App = () => (
           <Route path="/admission/form" element={<AdmissionFormPage />} />
           <Route path="/admission/fees" element={<AdmissionFeesPage />} />
           <Route path="/admission/evaluation" element={<StudentEvaluationPage />} />
+          <Route path="/academics/routine" element={<ClassRoutinePage />} />
+          <Route path="/academics/syllabus" element={<SyllabusPage />} />
+          <Route path="/academics/calendar" element={<AcademicCalendarPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

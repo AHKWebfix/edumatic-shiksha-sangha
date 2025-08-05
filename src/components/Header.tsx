@@ -59,13 +59,13 @@ const Header = () => {
     href: "#academics",
     submenu: [{
       title: "শ্রেণি রুটিন",
-      href: "#routine"
+      href: "/academics/routine"
     }, {
       title: "সিলেবাস ও কারিকুলাম",
-      href: "#syllabus"
+      href: "/academics/syllabus"
     }, {
       title: "একাডেমিক ক্যালেন্ডার",
-      href: "#calendar"
+      href: "/academics/calendar"
     }]
   }, {
     title: "পরীক্ষা",
