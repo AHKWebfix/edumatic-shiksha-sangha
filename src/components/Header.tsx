@@ -114,24 +114,24 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Desktop Navigation with fixed positioning */}
-        <div className="hidden xl:flex relative">
-          <NavigationMenu>
+        {/* Desktop Navigation with proper positioning */}
+        <div className="hidden xl:flex">
+          <NavigationMenu className="z-50">
             <NavigationMenuList className="space-x-1">
               {menuItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   {item.submenu ? (
                     <>
-                      <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 text-white font-bold text-base px-3 py-2">
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 text-white font-bold text-base px-3 py-2 data-[state=open]:bg-white/10">
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="absolute top-full left-0 mt-1">
-                        <div className="w-72 p-4 bg-white shadow-lg rounded-md">
+                      <NavigationMenuContent className="min-w-max p-0">
+                        <div className="w-72 p-4 bg-white border border-gray-200 shadow-lg rounded-md">
                           {item.submenu.map((subItem, subIndex) => (
                             <NavigationMenuLink
                               key={subIndex}
                               href={subItem.href}
-                              className="block px-4 py-3 text-base font-bold hover:bg-accent hover:text-accent-foreground rounded-md transition-colors text-foreground"
+                              className="block px-4 py-3 text-base font-bold hover:bg-accent hover:text-accent-foreground rounded-md transition-colors text-foreground border-b border-gray-100 last:border-b-0"
                             >
                               {subItem.title}
                             </NavigationMenuLink>
