@@ -9,67 +9,76 @@ const Gallery = () => {
     {
       id: 1,
       type: "image",
-      title: "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৪",
-      date: "১৫ ডিসেম্বর ২০২৪",
-      category: "ক্রীড়া",
-      thumbnail: "/placeholder.svg",
-      description: "আমাদের প্রতিষ্ঠানের বার্ষিক ক্রীড়া প্রতিযোগিতার মুহূর্তগুলো"
+      title: "প্রতিষ্ঠানের মূল ভবন",
+      date: "২০২৪",
+      category: "প্রাতিষ্ঠানিক",
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/4-min.png",
+      description: "আমাদের শিক্ষা প্রতিষ্ঠানের মূল একাডেমিক ভবন"
     },
     {
       id: 2,
       type: "image",
-      title: "সাংস্কৃতিক অনুষ্ঠান ২০২৪",
-      date: "১০ নভেম্বর ২০২৪",
-      category: "সংস্কৃতি",
-      thumbnail: "/placeholder.svg",
-      description: "বার্ষিক সাংস্কৃতিক অনুষ্ঠানের বর্ণিল আয়োজন"
+      title: "ক্যাম্পাসের প্রাকৃতিক দৃশ্য",
+      date: "২০২৪",
+      category: "ক্যাম্পাস",
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/3-min.png",
+      description: "সবুজে ঘেরা আমাদের সুন্দর ক্যাম্পাস"
     },
     {
       id: 3,
-      type: "video",
-      title: "প্রতিষ্ঠানের পরিচিতি ভিডিও",
-      date: "০৫ নভেম্বর ২০২৪",
+      type: "image",
+      title: "প্রশাসনিক ভবন",
+      date: "২০২৪",
       category: "প্রাতিষ্ঠানিক",
-      thumbnail: "/placeholder.svg",
-      description: "আমাদের শিক্ষা প্রতিষ্ঠানের সামগ্রিক পরিচিতি"
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/8-min.png",
+      description: "আধুনিক প্রশাসনিক কার্যক্রমের কেন্দ্র"
     },
     {
       id: 4,
       type: "image",
-      title: "বিজ্ঞান মেলা ২০২৪",
-      date: "২৮ অক্টোবর ২০২৪",
+      title: "শিক্ষার্থীদের কার্যক্রম",
+      date: "২০২৪",
       category: "শিক্ষা",
-      thumbnail: "/placeholder.svg",
-      description: "শিক্ষার্থীদের বিজ্ঞান প্রজেক্ট ও উদ্ভাবনী কাজ"
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/1-min.png",
+      description: "শিক্ষার্থীদের বিভিন্ন শিক্ষামূলক কার্যক্রম"
     },
     {
       id: 5,
       type: "image",
-      title: "পুরস্কার বিতরণী অনুষ্ঠান",
-      date: "২০ অক্টোবর ২০২৪",
-      category: "পুরস্কার",
-      thumbnail: "/placeholder.svg",
-      description: "মেধাবী শিক্ষার্থীদের পুরস্কার প্রদান অনুষ্ঠান"
+      title: "ক্রীড়া ও বিনোদন এলাকা",
+      date: "২০২৪",
+      category: "ক্রীড়া",
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/7-min.png",
+      description: "শিক্ষার্থীদের খেলাধুলা ও বিনোদনের জন্য আলাদা এলাকা"
     },
     {
       id: 6,
       type: "image",
-      title: "নতুন ভবনের উদ্বোধন",
-      date: "১৫ সেপ্টেম্বর ২০২৪",
-      category: "প্রাতিষ্ঠানিক",
-      thumbnail: "/placeholder.svg",
-      description: "প্রতিষ্ঠানের নতুন একাডেমিক ভবনের উদ্বোধনী অনুষ্ঠান"
+      title: "লাইব্রেরি ও পাঠাগার",
+      date: "২০২৪",
+      category: "শিক্ষা",
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/6-min.png",
+      description: "সমৃদ্ধ গ্রন্থাগার ও অধ্যয়ন কক্ষ"
+    },
+    {
+      id: 7,
+      type: "image",
+      title: "বিজ্ঞান গবেষণাগার",
+      date: "২০২৪",
+      category: "বিজ্ঞান",
+      thumbnail: "https://mlafpij6mnr2.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://cdhddm.edu.bd/wp-content/uploads/2023/09/11-min.png",
+      description: "আধুনিক বিজ্ঞান গবেষণাগার ও ল্যাব সুবিধা"
     }
   ];
 
-  const categories = ["সকল", "ক্রীড়া", "সংস্কৃতি", "শিক্ষা", "প্রাতিষ্ঠানিক", "পুরস্কার"];
+  const categories = ["সকল", "প্রাতিষ্ঠানিক", "ক্যাম্পাস", "শিক্ষা", "ক্রীড়া", "বিজ্ঞান"];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "ক্রীড়া": return "bg-blue-100 text-blue-700";
-      case "সংস্কৃতি": return "bg-purple-100 text-purple-700";
-      case "শিক্ষা": return "bg-green-100 text-green-700";
-      case "পুরস্কার": return "bg-yellow-100 text-yellow-700";
+      case "ক্যাম্পাস": return "bg-green-100 text-green-700";
+      case "শিক্ষা": return "bg-purple-100 text-purple-700";
+      case "বিজ্ঞান": return "bg-orange-100 text-orange-700";
       case "প্রাতিষ্ঠানিক": return "bg-gray-100 text-gray-700";
       default: return "bg-primary/10 text-primary";
     }
@@ -122,28 +131,17 @@ const Gallery = () => {
                       size="sm" 
                       className="w-full bg-white/90 text-primary hover:bg-white"
                     >
-                      {item.type === "video" ? (
-                        <>
-                          <Play className="h-4 w-4 mr-2" />
-                          ভিডিও দেখুন
-                        </>
-                      ) : (
-                        <>
-                          <Camera className="h-4 w-4 mr-2" />
-                          বিস্তারিত দেখুন
-                        </>
-                      )}
+                      <Camera className="h-4 w-4 mr-2" />
+                      বিস্তারিত দেখুন
                     </Button>
                   </div>
                 </div>
                 
                 {/* Type Badge */}
                 <Badge 
-                  className={`absolute top-4 right-4 ${
-                    item.type === "video" ? "bg-red-500" : "bg-primary"
-                  } text-white`}
+                  className="absolute top-4 right-4 bg-primary text-white"
                 >
-                  {item.type === "video" ? "ভিডিও" : "ছবি"}
+                  ছবি
                 </Badge>
               </div>
 
