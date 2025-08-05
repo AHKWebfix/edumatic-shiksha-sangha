@@ -125,7 +125,7 @@ const Header = () => {
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
           <div className="min-w-0">
-            <h1 className="text-lg sm:text-xl md:text-2xl leading-tight font-bold lg:text-xl">
+            <h1 className="sm:text-xl md:text-2xl leading-tight font-bold lg:text-xl text-lg">
               এডুমেটিক স্কুল অ্যান্ড কলেজ
             </h1>
             <p className="text-xs sm:text-sm md:text-base opacity-90 font-medium">
