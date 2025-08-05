@@ -20,7 +20,7 @@ const Header = () => {
       submenu: [
         { title: "প্রতিষ্ঠান ইতিহাস", href: "#history" },
         { title: "এক নজরে আমাদের প্রতিষ্ঠান", href: "#overview" },
-        { title: "স্বীকৃতি ও আসন সংখ্যা", href: "#recognition" },
+        { title: "স্বীকৃতি ও সাধারণ তথ্য", href: "#recognition" },
         { title: "অবকাঠামো ও সুযোগ-সুবিধা", href: "#facilities" },
       ]
     },
@@ -38,8 +38,8 @@ const Header = () => {
       title: "ভর্তি তথ্য",
       href: "#admission",
       submenu: [
-        { title: "ভর্তি ফর্ম ও নিয়মাবলী", href: "#admission-form" },
-        { title: "ভর্তি ও মাসিক ফি", href: "#fees" },
+        { title: "ভর্তি নিয়মাবলী", href: "#admission-rules" },
+        { title: "ভর্তি ফি ও মাসিক বেতন", href: "#fees" },
         { title: "শিক্ষার্থীর মূল্যায়ন", href: "#evaluation" },
       ]
     },
@@ -78,26 +78,26 @@ const Header = () => {
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
       {/* Top Info Bar with better contrast */}
       <div className="bg-slate-800/90 py-2.5">
-        <div className="container mx-auto flex flex-wrap items-center justify-between text-sm font-medium">
+        <div className="container mx-auto flex flex-wrap items-center justify-between text-base font-bold">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span className="font-semibold">০১৭৮৮-৯৯৮৮৭৭</span>
+              <span className="font-extrabold">০১৭৮৮-৯৯৮৮৭৭</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span className="font-semibold">info@edumatic.edu.bd</span>
+              <span className="font-extrabold">info@edumatic.edu.bd</span>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <MapPin className="h-4 w-4" />
-            <span className="font-semibold">ঢাকা, বাংলাদেশ</span>
+            <span className="font-extrabold">ঢাকা, বাংলাদেশ</span>
           </div>
         </div>
       </div>
 
-      {/* Main Header - Increased container width */}
-      <div className="max-w-8xl mx-auto flex items-center justify-between py-4 px-4">
+      {/* Main Header - Adjusted width */}
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4">
         <div className="flex items-center space-x-4 min-w-0 flex-shrink-0">
           <img 
             src="/placeholder.svg" 
@@ -105,51 +105,53 @@ const Header = () => {
             className="h-14 w-14 rounded-full bg-white/20 p-2 flex-shrink-0"
           />
           <div className="min-w-0">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
-              এডুমেটিক স্কুল অ্যান্ড কলেজ
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold leading-tight">
+              এডুমেটিক স্কুল
             </h1>
-            <p className="text-sm md:text-base opacity-90 font-medium">
+            <p className="text-base md:text-lg opacity-90 font-bold">
               শিক্ষায় উন্নতি, চরিত্রে মাধুর্য
             </p>
           </div>
         </div>
 
-        {/* Desktop Navigation - Improved spacing */}
-        <NavigationMenu className="hidden xl:flex">
-          <NavigationMenuList className="space-x-1">
-            {menuItems.map((item, index) => (
-              <NavigationMenuItem key={index}>
-                {item.submenu ? (
-                  <>
-                    <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 text-white font-semibold text-sm px-3 py-2">
+        {/* Desktop Navigation with fixed positioning */}
+        <div className="hidden xl:flex relative">
+          <NavigationMenu>
+            <NavigationMenuList className="space-x-1">
+              {menuItems.map((item, index) => (
+                <NavigationMenuItem key={index}>
+                  {item.submenu ? (
+                    <>
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-white/10 text-white font-bold text-base px-3 py-2">
+                        {item.title}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="absolute top-full left-0 mt-1">
+                        <div className="w-72 p-4 bg-white shadow-lg rounded-md">
+                          {item.submenu.map((subItem, subIndex) => (
+                            <NavigationMenuLink
+                              key={subIndex}
+                              href={subItem.href}
+                              className="block px-4 py-3 text-base font-bold hover:bg-accent hover:text-accent-foreground rounded-md transition-colors text-foreground"
+                            >
+                              {subItem.title}
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <NavigationMenuLink
+                      href={item.href}
+                      className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-base font-bold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    >
                       {item.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="w-72 p-4">
-                        {item.submenu.map((subItem, subIndex) => (
-                          <NavigationMenuLink
-                            key={subIndex}
-                            href={subItem.href}
-                            className="block px-4 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
-                          >
-                            {subItem.title}
-                          </NavigationMenuLink>
-                        ))}
-                      </div>
-                    </NavigationMenuContent>
-                  </>
-                ) : (
-                  <NavigationMenuLink
-                    href={item.href}
-                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                  >
-                    {item.title}
-                  </NavigationMenuLink>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+                    </NavigationMenuLink>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
         {/* Mobile Menu */}
         <Sheet>
@@ -164,7 +166,7 @@ const Header = () => {
                 <div key={index}>
                   <a 
                     href={item.href}
-                    className="flex items-center justify-between text-foreground hover:text-primary transition-colors font-semibold py-3 text-base"
+                    className="flex items-center justify-between text-foreground hover:text-primary transition-colors font-bold py-3 text-lg"
                   >
                     {item.title}
                     {item.submenu && <ChevronDown className="h-4 w-4" />}
@@ -175,7 +177,7 @@ const Header = () => {
                         <a
                           key={subIndex}
                           href={subItem.href}
-                          className="block text-sm font-medium text-muted-foreground hover:text-primary py-2"
+                          className="block text-base font-bold text-muted-foreground hover:text-primary py-2"
                         >
                           {subItem.title}
                         </a>

@@ -98,49 +98,53 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Anek Bangla', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.6;
+    font-size: 1.125rem; /* Increased base text size by 2 levels */
   }
 
   /* Enhanced typography for better readability */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+    @apply font-extrabold;
     line-height: 1.3;
   }
 
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-5xl md:text-6xl lg:text-7xl; /* Increased by 2 levels */
   }
 
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-4xl md:text-5xl lg:text-6xl; /* Increased by 2 levels */
   }
 
   h3 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-3xl md:text-4xl lg:text-5xl; /* Increased by 2 levels */
   }
 
   h4 {
-    @apply text-lg md:text-xl lg:text-2xl;
+    @apply text-2xl md:text-3xl lg:text-4xl; /* Increased by 2 levels */
   }
 
   p, div, span {
-    @apply font-medium;
+    @apply font-bold;
+    font-size: 1.125rem; /* Increased base text size */
   }
 
   /* Improved button text */
   button {
-    @apply font-semibold;
+    @apply font-extrabold;
+    font-size: 1.125rem; /* Increased button text size */
   }
 
   /* Enhanced link styling */
   a {
-    @apply font-semibold;
+    @apply font-extrabold;
+    font-size: 1.125rem; /* Increased link text size */
   }
 
   /* Better card content typography */
   .card-content p {
-    @apply text-base font-medium leading-relaxed;
+    @apply text-lg font-bold leading-relaxed; /* Increased by 2 levels */
   }
 }
 
@@ -151,18 +155,18 @@ All colors MUST be HSL.
 
   /* Text size utilities with improved weights */
   .text-enhanced-sm {
-    @apply text-sm font-semibold;
+    @apply text-base font-extrabold; /* Increased by 2 levels */
   }
 
   .text-enhanced-base {
-    @apply text-base font-semibold;
+    @apply text-lg font-extrabold; /* Increased by 2 levels */
   }
 
   .text-enhanced-lg {
-    @apply text-lg font-bold;
+    @apply text-xl font-extrabold; /* Increased by 2 levels */
   }
 
   .text-enhanced-xl {
-    @apply text-xl font-bold;
+    @apply text-2xl font-extrabold; /* Increased by 2 levels */
   }
 }
