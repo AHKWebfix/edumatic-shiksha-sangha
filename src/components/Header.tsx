@@ -1,4 +1,3 @@
-
 import { Menu, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -18,10 +17,10 @@ const Header = () => {
       title: "আমাদের সম্পর্কে",
       href: "#about",
       submenu: [
-        { title: "প্রতিষ্ঠান ইতিহাস", href: "#history" },
-        { title: "এক নজরে আমাদের প্রতিষ্ঠান", href: "#overview" },
-        { title: "স্বীকৃতি ও আসন সংখ্যা", href: "#recognition" },
-        { title: "অবকাঠামো ও সুযোগ-সুবিধা", href: "#facilities" },
+        { title: "প্রতিষ্ঠান ইতিহাস", href: "/about/history" },
+        { title: "এক নজরে আমাদের প্রতিষ্ঠান", href: "/about/overview" },
+        { title: "স্বীকৃতি ও আসন সংখ্যা", href: "/about/recognition" },
+        { title: "অবকাঠামো ও সুযোগ-সুবিধা", href: "/about/facilities" },
       ]
     },
     {
