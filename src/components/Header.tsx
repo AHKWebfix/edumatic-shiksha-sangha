@@ -12,6 +12,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -29,22 +30,37 @@ const Header = () => {
       if (!ticking.current) {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const scrollThreshold = 100;
+          const scrollThreshold = 150;
+          const minScrollDifference = 25;
           
-          // Show topbar when at the very top
-          if (currentScrollY <= 20) {
-            setIsScrolled(false);
-          }
-          // Hide topbar when scrolling down past threshold
-          else if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY.current) {
-            setIsScrolled(true);
-          }
-          // Show topbar when scrolling up
-          else if (currentScrollY < lastScrollY.current) {
-            setIsScrolled(false);
+          const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
+          
+          // Only process scroll if there's significant movement to avoid jitter
+          if (scrollDifference >= minScrollDifference) {
+            // Clear any existing timeout
+            if (scrollTimeoutRef.current) {
+              clearTimeout(scrollTimeoutRef.current);
+            }
+            
+            // Add a small debounce to ensure smooth transitions
+            scrollTimeoutRef.current = setTimeout(() => {
+              // Always show at the very top
+              if (currentScrollY <= 30) {
+                setIsScrolled(false);
+              }
+              // Hide when scrolling down past threshold
+              else if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY.current) {
+                setIsScrolled(true);
+              }
+              // Show when scrolling up significantly
+              else if (currentScrollY < lastScrollY.current - 10) {
+                setIsScrolled(false);
+              }
+            }, 50); // 50ms debounce
+            
+            lastScrollY.current = currentScrollY;
           }
           
-          lastScrollY.current = currentScrollY;
           ticking.current = false;
         });
         ticking.current = true;
@@ -55,7 +71,12 @@ const Header = () => {
     lastScrollY.current = window.scrollY;
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, []);
 
   const menuItems = [{
