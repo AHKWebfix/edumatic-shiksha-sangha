@@ -1,4 +1,3 @@
-
 import { Menu, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -128,10 +127,10 @@ const Header = () => {
                 <Phone className="h-3 w-3 flex-shrink-0" />
                 <span className="font-semibold">০১৭৮৮-৯৯৮৮৭৭</span>
               </div>
-              <div className="flex items-center space-x-1">
+              {/* Hide email section on mobile, show full email on desktop */}
+              <div className="hidden sm:flex items-center space-x-1">
                 <Mail className="h-3 w-3 flex-shrink-0" />
-                <span className="font-semibold hidden xs:inline">info@edumatic.edu.bd</span>
-                <span className="font-semibold xs:hidden">info@edumatic</span>
+                <span className="font-semibold">info@edumatic.edu.bd</span>
               </div>
             </div>
             <div className="flex items-center space-x-1">
