@@ -118,30 +118,7 @@ const Header = () => {
 
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
-      {/* Top Info Bar - Hidden for experiment */}
-      <div className="absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between text-xs font-medium">
-            <div className="flex items-center space-x-3 sm:space-x-4">
-              <div className="flex items-center space-x-1">
-                <Phone className="h-3 w-3 flex-shrink-0" />
-                <span className="font-semibold">০১৭৮৮-৯৯৮৮৭৭</span>
-              </div>
-              {/* Hide email section on mobile, show full email on desktop */}
-              <div className="hidden sm:flex items-center space-x-1">
-                <Mail className="h-3 w-3 flex-shrink-0" />
-                <span className="font-semibold">info@edumatic.edu.bd</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-1">
-              <MapPin className="h-3 w-3 flex-shrink-0" />
-              <span className="font-semibold">ঢাকা, বাংলাদেশ</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header - Adjusted padding since top bar is hidden */}
+      {/* Main Header */}
       <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-4">
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
