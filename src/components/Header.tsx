@@ -4,13 +4,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const lastScrollY = useRef(0);
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -22,35 +20,6 @@ const Header = () => {
   const toggleSubmenu = (index: number) => {
     setOpenSubmenu(openSubmenu === index ? null : index);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Always show at the very top
-      if (currentScrollY <= 20) {
-        setIsScrolled(false);
-      }
-      // Hide when scrolling down past 100px
-      else if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
-        setIsScrolled(true);
-      }
-      // Show when scrolling up
-      else if (currentScrollY < lastScrollY.current) {
-        setIsScrolled(false);
-      }
-      
-      lastScrollY.current = currentScrollY;
-    };
-
-    // Set initial scroll position
-    lastScrollY.current = window.scrollY;
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const menuItems = [{
     title: "হোম",
@@ -150,11 +119,7 @@ const Header = () => {
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
       {/* Top Info Bar */}
-      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-transform duration-300 ease-out ${
-        isScrolled 
-          ? '-translate-y-full' 
-          : 'translate-y-0'
-      }`}>
+      <div className="absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-xs font-medium">
             <div className="flex items-center space-x-3 sm:space-x-4">
@@ -177,7 +142,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className={`container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 transition-all duration-300 ease-out ${isScrolled ? 'pt-3 sm:pt-4' : 'pt-10 sm:pt-12'}`}>
+      <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 pt-10 sm:pt-12">
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
           <div className="min-w-0">
