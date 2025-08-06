@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { usePageTransition } from "@/hooks/usePageTransition";
+import Preloader from "@/components/Preloader";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import InstituteHistoryPage from "./pages/about/InstituteHistoryPage";
@@ -31,39 +33,50 @@ import ContactPage from "./pages/ContactPage";
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  const isLoading = usePageTransition();
+
+  return (
+    <>
+      {isLoading && <Preloader />}
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about/history" element={<InstituteHistoryPage />} />
+        <Route path="/about/overview" element={<InstituteOverview />} />
+        <Route path="/about/recognition" element={<RecognitionSeats />} />
+        <Route path="/about/facilities" element={<Infrastructure />} />
+        <Route path="/administration/principal" element={<PrincipalPage />} />
+        <Route path="/administration/teachers" element={<TeachersStaffPage />} />
+        <Route path="/administration/committee" element={<ManagingCommitteePage />} />
+        <Route path="/administration/alumni" element={<AlumniPage />} />
+        <Route path="/admission/form" element={<AdmissionFormPage />} />
+        <Route path="/admission/fees" element={<AdmissionFeesPage />} />
+        <Route path="/admission/evaluation" element={<StudentEvaluationPage />} />
+        <Route path="/academics/routine" element={<ClassRoutinePage />} />
+        <Route path="/academics/syllabus" element={<SyllabusPage />} />
+        <Route path="/academics/calendar" element={<AcademicCalendarPage />} />
+        <Route path="/exams/fees-routine" element={<ExamFeesRoutinePage />} />
+        <Route path="/exams/results" element={<ExamResultsPage />} />
+        <Route path="/exams/public-results" element={<PublicExamResultsPage />} />
+        <Route path="/noticeboard" element={<NoticeBoardPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/attendance" element={<AttendancePage />} />
+        <Route path="/magazine" element={<MagazinePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about/history" element={<InstituteHistoryPage />} />
-          <Route path="/about/overview" element={<InstituteOverview />} />
-          <Route path="/about/recognition" element={<RecognitionSeats />} />
-          <Route path="/about/facilities" element={<Infrastructure />} />
-          <Route path="/administration/principal" element={<PrincipalPage />} />
-          <Route path="/administration/teachers" element={<TeachersStaffPage />} />
-          <Route path="/administration/committee" element={<ManagingCommitteePage />} />
-          <Route path="/administration/alumni" element={<AlumniPage />} />
-          <Route path="/admission/form" element={<AdmissionFormPage />} />
-          <Route path="/admission/fees" element={<AdmissionFeesPage />} />
-          <Route path="/admission/evaluation" element={<StudentEvaluationPage />} />
-          <Route path="/academics/routine" element={<ClassRoutinePage />} />
-          <Route path="/academics/syllabus" element={<SyllabusPage />} />
-          <Route path="/academics/calendar" element={<AcademicCalendarPage />} />
-          <Route path="/exams/fees-routine" element={<ExamFeesRoutinePage />} />
-          <Route path="/exams/results" element={<ExamResultsPage />} />
-          <Route path="/exams/public-results" element={<PublicExamResultsPage />} />
-          <Route path="/noticeboard" element={<NoticeBoardPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/attendance" element={<AttendancePage />} />
-          <Route path="/magazine" element={<MagazinePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

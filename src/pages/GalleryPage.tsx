@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -94,16 +93,16 @@ const GalleryPage = () => {
         </div>
 
         <Tabs defaultValue="সকল" className="w-full">
-          <TabsList className="grid w-full grid-cols-6 mb-8">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-8 h-auto">
             {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="text-xs sm:text-sm">
+              <TabsTrigger key={category} value={category} className="text-xs sm:text-sm py-2 px-1 sm:px-2">
                 {category}
               </TabsTrigger>
             ))}
           </TabsList>
 
           <TabsContent value="সকল">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {galleryItems.map((item) => (
                 <Card key={item.id} className="group overflow-hidden">
                   <div className="relative">
@@ -159,7 +158,7 @@ const GalleryPage = () => {
 
           {categories.slice(1).map((category) => (
             <TabsContent key={category} value={category}>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {galleryItems
                   .filter(item => item.category === category)
                   .map((item) => (
