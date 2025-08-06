@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
@@ -169,16 +170,20 @@ All colors MUST be HSL.
     @apply text-xl font-bold;
   }
 
-  /* Page title utilities with specific font sizes */
+  /* Page title utilities with specific font sizes and distinctive styling */
   .page-title-mobile {
-    font-size: 40px;
-    line-height: 1.2;
+    font-size: 35px;
+    line-height: 1.1;
+    font-weight: 800;
+    color: hsl(var(--primary));
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
   }
 
   @media (min-width: 768px) {
     .page-title-mobile {
-      font-size: 45px;
-      line-height: 1.2;
+      font-size: 40px;
+      line-height: 1.15;
     }
   }
 
