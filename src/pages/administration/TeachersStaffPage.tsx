@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, GraduationCap, Award, Phone, Mail, BookOpen } from "lucide-react";
@@ -91,107 +92,111 @@ const TeachersStaffPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+    <div className="min-h-screen bg-background font-anek-bangla">
       <Header />
       
-      <main className="container mx-auto px-4 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            শিক্ষক ও স্টাফবৃন্দ
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            আমাদের অভিজ্ঞ ও দক্ষ শিক্ষকমণ্ডলী যারা শিক্ষার্থীদের উন্নত ভবিষ্যৎ গড়তে নিরলসভাবে কাজ করে যাচ্ছেন
-          </p>
-        </div>
-
-        {/* Statistics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <Card className="bg-white/90 shadow-lg text-center">
-            <CardContent className="p-6">
-              <Users className="h-10 w-10 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-primary">৩৫</div>
-              <div className="text-sm text-muted-foreground">মোট শিক্ষক</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-white/90 shadow-lg text-center">
-            <CardContent className="p-6">
-              <GraduationCap className="h-10 w-10 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-primary">২৮</div>
-              <div className="text-sm text-muted-foreground">স্নাতকোত্তর</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-white/90 shadow-lg text-center">
-            <CardContent className="p-6">
-              <Award className="h-10 w-10 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-primary">৫</div>
-              <div className="text-sm text-muted-foreground">পিএইচডি</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-white/90 shadow-lg text-center">
-            <CardContent className="p-6">
-              <BookOpen className="h-10 w-10 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold text-primary">১৫+</div>
-              <div className="text-sm text-muted-foreground">গড় অভিজ্ঞতা</div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Teaching Staff */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-primary mb-8 text-center">শিক্ষকবৃন্দ</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {teachers.map((teacher, index) => (
-              <Card key={index} className="bg-white/90 shadow-xl hover:shadow-2xl transition-shadow">
-                <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-                  <CardTitle className="text-lg">{teacher.name}</CardTitle>
-                  <p className="text-primary-foreground/80">{teacher.position}</p>
-                </CardHeader>
-                <CardContent className="p-6 space-y-3">
-                  <div className="flex items-center space-x-2">
-                    <BookOpen className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold">{teacher.subject}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <GraduationCap className="h-4 w-4 text-primary" />
-                    <span className="text-sm">{teacher.qualification}</span>
-                  </div>
-                  <Badge variant="secondary" className="w-fit">
-                    {teacher.experience}
-                  </Badge>
-                  <div className="pt-2 space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <Phone className="h-3 w-3 text-primary" />
-                      <span className="text-xs">{teacher.phone}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Mail className="h-3 w-3 text-primary" />
-                      <span className="text-xs">{teacher.email}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+      <PageHeader
+        title="শিক্ষক ও স্টাফবৃন্দ"
+        subtitle="শিক্ষার সহায়তাকারী"
+        description="আমাদের অভিজ্ঞ ও দক্ষ শিক্ষকমণ্ডলী যারা শিক্ষার্থীদের উন্নত ভবিষ্যৎ গড়তে নিরলসভাবে কাজ করে যাচ্ছেন"
+        icon={<GraduationCap />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "প্রশাসন", href: "/administration" },
+          { label: "শিক্ষক ও স্টাফবৃন্দ" }
+        ]}
+      />
+      
+      <main className="pb-16">
+        <div className="container mx-auto px-4">
+          {/* Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <Card className="bg-white/90 shadow-lg text-center">
+              <CardContent className="p-6">
+                <Users className="h-10 w-10 text-primary mx-auto mb-2" />
+                <div className="text-2xl font-bold text-primary">৩৫</div>
+                <div className="text-sm text-muted-foreground">মোট শিক্ষক</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/90 shadow-lg text-center">
+              <CardContent className="p-6">
+                <GraduationCap className="h-10 w-10 text-primary mx-auto mb-2" />
+                <div className="text-2xl font-bold text-primary">২৮</div>
+                <div className="text-sm text-muted-foreground">স্নাতকোত্তর</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/90 shadow-lg text-center">
+              <CardContent className="p-6">
+                <Award className="h-10 w-10 text-primary mx-auto mb-2" />
+                <div className="text-2xl font-bold text-primary">৫</div>
+                <div className="text-sm text-muted-foreground">পিএইচডি</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/90 shadow-lg text-center">
+              <CardContent className="p-6">
+                <BookOpen className="h-10 w-10 text-primary mx-auto mb-2" />
+                <div className="text-2xl font-bold text-primary">১৫+</div>
+                <div className="text-sm text-muted-foreground">গড় অভিজ্ঞতা</div>
+              </CardContent>
+            </Card>
           </div>
-        </div>
 
-        {/* Support Staff */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-primary mb-8 text-center">সহায়ক কর্মচারীবৃন্দ</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {supportStaff.map((staff, index) => (
-              <Card key={index} className="bg-white/90 shadow-xl">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-1">{staff.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-1">{staff.position}</p>
-                  <p className="text-xs text-muted-foreground mb-2">{staff.department}</p>
-                  <Badge variant="outline">{staff.experience}</Badge>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Teaching Staff */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-8 text-center">শিক্ষকবৃন্দ</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teachers.map((teacher, index) => (
+                <Card key={index} className="bg-white/90 shadow-xl hover:shadow-2xl transition-shadow">
+                  <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
+                    <CardTitle className="text-lg">{teacher.name}</CardTitle>
+                    <p className="text-primary-foreground/80">{teacher.position}</p>
+                  </CardHeader>
+                  <CardContent className="p-6 space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                      <span className="text-sm font-semibold">{teacher.subject}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <GraduationCap className="h-4 w-4 text-primary" />
+                      <span className="text-sm">{teacher.qualification}</span>
+                    </div>
+                    <Badge variant="secondary" className="w-fit">
+                      {teacher.experience}
+                    </Badge>
+                    <div className="pt-2 space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <Phone className="h-3 w-3 text-primary" />
+                        <span className="text-xs">{teacher.phone}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Mail className="h-3 w-3 text-primary" />
+                        <span className="text-xs">{teacher.email}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Support Staff */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-8 text-center">সহায়ক কর্মচারীবৃন্দ</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {supportStaff.map((staff, index) => (
+                <Card key={index} className="bg-white/90 shadow-xl">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-primary mb-1">{staff.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-1">{staff.position}</p>
+                    <p className="text-xs text-muted-foreground mb-2">{staff.department}</p>
+                    <Badge variant="outline">{staff.experience}</Badge>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </main>
