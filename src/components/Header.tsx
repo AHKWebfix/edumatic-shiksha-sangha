@@ -11,8 +11,6 @@ const Header = () => {
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
-  const ticking = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -27,44 +25,22 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!ticking.current) {
-        requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const scrollThreshold = 150;
-          const minScrollDifference = 25;
-          
-          const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
-          
-          // Only process scroll if there's significant movement to avoid jitter
-          if (scrollDifference >= minScrollDifference) {
-            // Clear any existing timeout
-            if (scrollTimeoutRef.current) {
-              clearTimeout(scrollTimeoutRef.current);
-            }
-            
-            // Add a small debounce to ensure smooth transitions
-            scrollTimeoutRef.current = setTimeout(() => {
-              // Always show at the very top
-              if (currentScrollY <= 30) {
-                setIsScrolled(false);
-              }
-              // Hide when scrolling down past threshold
-              else if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY.current) {
-                setIsScrolled(true);
-              }
-              // Show when scrolling up significantly
-              else if (currentScrollY < lastScrollY.current - 10) {
-                setIsScrolled(false);
-              }
-            }, 50); // 50ms debounce
-            
-            lastScrollY.current = currentScrollY;
-          }
-          
-          ticking.current = false;
-        });
-        ticking.current = true;
+      const currentScrollY = window.scrollY;
+      
+      // Always show at the very top
+      if (currentScrollY <= 20) {
+        setIsScrolled(false);
       }
+      // Hide when scrolling down past 100px
+      else if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
+        setIsScrolled(true);
+      }
+      // Show when scrolling up
+      else if (currentScrollY < lastScrollY.current) {
+        setIsScrolled(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
 
     // Set initial scroll position
@@ -73,9 +49,6 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
     };
   }, []);
 
@@ -177,10 +150,10 @@ const Header = () => {
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
       {/* Top Info Bar */}
-      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-all duration-300 ease-out ${
+      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-transform duration-300 ease-out ${
         isScrolled 
-          ? '-translate-y-full opacity-0' 
-          : 'translate-y-0 opacity-100'
+          ? '-translate-y-full' 
+          : 'translate-y-0'
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-xs font-medium">
