@@ -118,8 +118,8 @@ const Header = () => {
 
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
-      {/* Top Info Bar */}
-      <div className="absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10">
+      {/* Top Info Bar - Hidden for experiment */}
+      <div className="absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 hidden">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-xs font-medium">
             <div className="flex items-center space-x-3 sm:space-x-4">
@@ -141,8 +141,8 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
-      <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 pt-10 sm:pt-12">
+      {/* Main Header - Adjusted padding since top bar is hidden */}
+      <div className="container mx-auto flex items-center justify-between py-3 sm:py-4 px-4">
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
           <div className="min-w-0">
