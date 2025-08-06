@@ -12,7 +12,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
-  const scrollDirection = useRef<'up' | 'down'>('up');
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -30,33 +29,22 @@ const Header = () => {
       if (!ticking.current) {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          const scrollThreshold = 80;
-          const minScrollDifference = 15;
+          const scrollThreshold = 100;
           
-          const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
-          
-          // Only process scroll if there's significant movement
-          if (scrollDifference >= minScrollDifference) {
-            // Determine scroll direction
-            const newDirection = currentScrollY > lastScrollY.current ? 'down' : 'up';
-            
-            // Only change state if scroll direction is consistent or scroll position is significant
-            if (currentScrollY <= 30) {
-              // Always show at the top
-              setIsScrolled(false);
-            } else if (currentScrollY >= scrollThreshold) {
-              // Only hide if scrolling down and past threshold
-              if (newDirection === 'down' && scrollDirection.current === 'down') {
-                setIsScrolled(true);
-              } else if (newDirection === 'up') {
-                setIsScrolled(false);
-              }
-            }
-            
-            scrollDirection.current = newDirection;
-            lastScrollY.current = currentScrollY;
+          // Show topbar when at the very top
+          if (currentScrollY <= 20) {
+            setIsScrolled(false);
+          }
+          // Hide topbar when scrolling down past threshold
+          else if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY.current) {
+            setIsScrolled(true);
+          }
+          // Show topbar when scrolling up
+          else if (currentScrollY < lastScrollY.current) {
+            setIsScrolled(false);
           }
           
+          lastScrollY.current = currentScrollY;
           ticking.current = false;
         });
         ticking.current = true;
@@ -168,7 +156,7 @@ const Header = () => {
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
       {/* Top Info Bar */}
-      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-all duration-500 ease-in-out ${
+      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-all duration-300 ease-out ${
         isScrolled 
           ? '-translate-y-full opacity-0' 
           : 'translate-y-0 opacity-100'
@@ -195,7 +183,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className={`container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 transition-all duration-500 ease-in-out ${isScrolled ? 'pt-3 sm:pt-4' : 'pt-10 sm:pt-12'}`}>
+      <div className={`container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 transition-all duration-300 ease-out ${isScrolled ? 'pt-3 sm:pt-4' : 'pt-10 sm:pt-12'}`}>
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
           <div className="min-w-0">
