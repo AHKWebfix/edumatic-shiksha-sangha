@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Bell, Search, Calendar, Download, Eye, Clock, AlertCircle, Info, Megaphone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const NoticeBoardPage = () => {
   const allNotices = [
@@ -120,21 +120,18 @@ const NoticeBoardPage = () => {
     <div className="min-h-screen bg-background font-anek-bangla">
       <Header />
       
+      <PageHeader
+        title="নোটিশ বোর্ড"
+        description="গুরুত্বপূর্ণ ঘোষণা ও তথ্যসমূহ এক স্থানে"
+        icon={<Bell />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "নোটিশ বোর্ড" }
+        ]}
+      />
+      
       <main className="py-16">
         <div className="container mx-auto">
-          {/* Page Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-4">
-              <Bell className="h-8 w-8 text-primary mr-3" />
-              <h1 className="text-3xl md:text-4xl font-bold text-primary">
-                নোটিশ বোর্ড
-              </h1>
-            </div>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              গুরুত্বপূর্ণ ঘোষণা ও তথ্যসমূহ এক স্থানে
-            </p>
-          </div>
-
           {/* Search and Filter Section */}
           <Card className="shadow-lg border-primary/20 mb-8">
             <CardHeader>

@@ -1,6 +1,7 @@
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -73,17 +74,17 @@ const ContactPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader
+        title="যোগাযোগ"
+        description="আমাদের সাথে যোগাযোগ করুন। আমরা আপনার সেবায় প্রতিদিন প্রস্তুত।"
+        icon={<MessageCircle />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "যোগাযোগ" }
+        ]}
+      />
+      
       <main className="container mx-auto py-8 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            <MessageCircle className="inline h-8 w-8 mr-3" />
-            যোগাযোগ
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            আমাদের সাথে যোগাযোগ করুন। আমরা আপনার সেবায় প্রতিদিন প্রস্তুত।
-          </p>
-        </div>
-
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Contact Form */}
           <Card>
