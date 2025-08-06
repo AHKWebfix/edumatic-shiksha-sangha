@@ -28,39 +28,39 @@ const StudentAttendance = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <UserCheck className="h-8 w-8 text-primary mr-3" />
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+    <section className="py-8 sm:py-12 lg:py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+            <UserCheck className="h-6 w-6 sm:h-8 sm:w-8 text-primary mr-2 sm:mr-3" />
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
               শিক্ষার্থী উপস্থিতি
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             দৈনিক ও মাসিক উপস্থিতির পরিসংখ্যান ও বিশ্লেষণ
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Today's Overview */}
           <Card className="shadow-lg border-primary/20">
-            <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-              <CardTitle className="flex items-center">
-                <Calendar className="h-5 w-5 mr-2" />
+            <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white p-4 sm:p-6">
+              <CardTitle className="flex items-center text-base sm:text-lg">
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 আজকের উপস্থিতি
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
-              <div className="h-64">
+            <CardContent className="p-4 sm:p-6">
+              <div className="h-48 sm:h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={todayAttendance}
                       cx="50%"
                       cy="50%"
-                      innerRadius={60}
-                      outerRadius={80}
+                      innerRadius={40}
+                      outerRadius={60}
                       paddingAngle={5}
                       dataKey="value"
                     >
@@ -76,16 +76,16 @@ const StudentAttendance = () => {
               </div>
               
               <div className="space-y-2 mt-4">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center text-sm sm:text-base">
                   <span className="flex items-center">
-                    <div className="w-3 h-3 bg-green-600 rounded-full mr-2"></div>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-600 rounded-full mr-2"></div>
                     উপস্থিত
                   </span>
                   <span className="font-bold text-green-600">১১৯৫ জন (৯৫.৬%)</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center text-sm sm:text-base">
                   <span className="flex items-center">
-                    <div className="w-3 h-3 bg-red-600 rounded-full mr-2"></div>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-600 rounded-full mr-2"></div>
                     অনুপস্থিত
                   </span>
                   <span className="font-bold text-red-600">৫৫ জন (৪.৪%)</span>
@@ -96,14 +96,14 @@ const StudentAttendance = () => {
 
           {/* Class-wise Stats */}
           <Card className="lg:col-span-2 shadow-lg border-primary/20">
-            <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-              <CardTitle className="flex items-center justify-between">
-                <span className="flex items-center">
-                  <TrendingUp className="h-5 w-5 mr-2" />
+            <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white p-4 sm:p-6">
+              <CardTitle className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
+                <span className="flex items-center text-base sm:text-lg">
+                  <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   শ্রেণিভিত্তিক উপস্থিতি
                 </span>
                 <Select>
-                  <SelectTrigger className="w-40 bg-white text-foreground">
+                  <SelectTrigger className="w-32 sm:w-40 bg-white text-foreground text-sm">
                     <SelectValue placeholder="আজ" />
                   </SelectTrigger>
                   <SelectContent>
@@ -114,17 +114,17 @@ const StudentAttendance = () => {
                 </Select>
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
-              <div className="h-64">
+            <CardContent className="p-4 sm:p-6">
+              <div className="h-48 sm:h-64">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={attendanceData}>
+                  <BarChart data={attendanceData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis 
                       dataKey="class" 
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 10 }}
                     />
                     <YAxis 
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 10 }}
                     />
                     <Tooltip 
                       formatter={(value: number, name: string) => [
@@ -143,22 +143,22 @@ const StudentAttendance = () => {
 
         {/* Monthly Trend */}
         <Card className="shadow-lg border-primary/20">
-          <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-            <CardTitle>মাসিক উপস্থিতির প্রবণতা</CardTitle>
+          <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white p-4 sm:p-6">
+            <CardTitle className="text-base sm:text-lg">মাসিক উপস্থিতির প্রবণতা</CardTitle>
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="h-80">
+          <CardContent className="p-4 sm:p-6">
+            <div className="h-60 sm:h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={monthlyTrend}>
+                <BarChart data={monthlyTrend} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis 
                     dataKey="month" 
-                    tick={{ fontSize: 12 }}
+                    tick={{ fontSize: 10 }}
                   />
                   <YAxis 
                     domain={[90, 100]}
-                    tick={{ fontSize: 12 }}
-                    label={{ value: 'শতাংশ (%)', angle: -90, position: 'insideLeft' }}
+                    tick={{ fontSize: 10 }}
+                    label={{ value: 'শতাংশ (%)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fontSize: 10 } }}
                   />
                   <Tooltip 
                     formatter={(value: number) => [`${value}%`, 'উপস্থিতির হার']}
