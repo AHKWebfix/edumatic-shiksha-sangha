@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { BookOpen, Trophy, Target, BarChart3, Star, Award, Users, TrendingUp } from "lucide-react";
 
 const StudentEvaluationPage = () => {
@@ -51,20 +52,22 @@ const StudentEvaluationPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader 
+        title="শিক্ষার্থীর মূল্যায়ন"
+        subtitle="ভর্তি তথ্য"
+        description="এডুমেটিক স্কুল অ্যান্ড কলেজের শিক্ষার্থী মূল্যায়ন পদ্ধতি ও গ্রেডিং সিস্টেম"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "ভর্তি তথ্য", href: "#admission" },
+          { label: "শিক্ষার্থীর মূল্যায়ন" }
+        ]}
+        icon={<BarChart3 />}
+      />
+      
       <main className="container mx-auto px-4 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            শিক্ষার্থীর মূল্যায়ন
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            এডুমেটিক স্কুল অ্যান্ড কলেজের শিক্ষার্থী মূল্যায়ন পদ্ধতি ও গ্রেডিং সিস্টেম
-          </p>
-        </div>
-
         {/* Grading System */}
         <div className="mb-12">
           <Card>

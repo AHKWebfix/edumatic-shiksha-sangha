@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { DollarSign, CreditCard, BookOpen, Users, Calculator } from "lucide-react";
 
 const AdmissionFeesPage = () => {
@@ -38,20 +39,22 @@ const AdmissionFeesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader 
+        title="ভর্তি ও মাসিক ফি"
+        subtitle="ভর্তি তথ্য"
+        description="এডুমেটিক স্কুল অ্যান্ড কলেজের সকল শ্রেণির ভর্তি ও মাসিক ফি এর বিস্তারিত তথ্য"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "ভর্তি তথ্য", href: "#admission" },
+          { label: "ভর্তি ও মাসিক ফি" }
+        ]}
+        icon={<Calculator />}
+      />
+      
       <main className="container mx-auto px-4 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            ভর্তি ও মাসিক ফি
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            এডুমেটিক স্কুল অ্যান্ড কলেজের সকল শ্রেণির ভর্তি ও মাসিক ফি এর বিস্তারিত তথ্য
-          </p>
-        </div>
-
         {/* Fee Structure Table */}
         <div className="mb-12">
           <Card>

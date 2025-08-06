@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { FileText, Download, Calendar, AlertCircle, CheckCircle, Users } from "lucide-react";
 
 const AdmissionFormPage = () => {
@@ -61,20 +62,22 @@ const AdmissionFormPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader 
+        title="ভর্তি ফর্ম ও নিয়মাবলী"
+        subtitle="ভর্তি তথ্য"
+        description="এডুমেটিক স্কুল অ্যান্ড কলেজে ভর্তির জন্য প্রয়োজনীয় সকল তথ্য ও নির্দেশনা"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "ভর্তি তথ্য", href: "#admission" },
+          { label: "ভর্তি ফর্ম ও নিয়মাবলী" }
+        ]}
+        icon={<FileText />}
+      />
+      
       <main className="container mx-auto px-4 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            ভর্তি ফর্ম ও নিয়মাবলী
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            এডুমেটিক স্কুল অ্যান্ড কলেজে ভর্তির জন্য প্রয়োজনীয় সকল তথ্য ও নির্দেশনা
-          </p>
-        </div>
-
         {/* Admission Steps */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-8 text-primary">ভর্তির ধাপসমূহ</h2>
