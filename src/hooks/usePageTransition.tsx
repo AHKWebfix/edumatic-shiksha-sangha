@@ -7,6 +7,9 @@ export const usePageTransition = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Scroll to top immediately when location changes
+    window.scrollTo(0, 0);
+    
     setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);

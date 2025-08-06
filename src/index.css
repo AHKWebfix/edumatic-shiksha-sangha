@@ -169,10 +169,17 @@ All colors MUST be HSL.
     @apply text-xl font-bold;
   }
 
-  /* Mobile optimized page title utilities */
+  /* Page title utilities with specific font sizes */
   .page-title-mobile {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+    font-size: 40px;
     line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .page-title-mobile {
+      font-size: 45px;
+      line-height: 1.2;
+    }
   }
 
   .page-subtitle-mobile {
