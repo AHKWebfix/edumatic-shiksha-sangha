@@ -4,12 +4,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = () => {
   const location = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -23,18 +25,27 @@ const Header = () => {
   };
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > 50 && currentScrollY > lastScrollY) {
-        setIsScrolled(true);
-      } else if (currentScrollY < lastScrollY || currentScrollY <= 50) {
-        setIsScrolled(false);
+      if (!ticking.current) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrollThreshold = 100;
+          const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
+
+          // Only update state if scroll difference is significant enough
+          if (scrollDifference > 10) {
+            if (currentScrollY > scrollThreshold && currentScrollY > lastScrollY.current) {
+              setIsScrolled(true);
+            } else if (currentScrollY < lastScrollY.current || currentScrollY <= 50) {
+              setIsScrolled(false);
+            }
+            lastScrollY.current = currentScrollY;
+          }
+          
+          ticking.current = false;
+        });
+        ticking.current = true;
       }
-      
-      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -139,7 +150,7 @@ const Header = () => {
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50 relative">
       {/* Top Info Bar */}
-      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-all duration-500 ease-in-out ${
+      <div className={`absolute top-0 left-0 right-0 bg-slate-800/90 py-2 z-10 transition-all duration-700 ease-in-out ${
         isScrolled 
           ? '-translate-y-full opacity-0' 
           : 'translate-y-0 opacity-100'
@@ -166,7 +177,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className={`container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 transition-all duration-500 ease-in-out ${isScrolled ? 'pt-3 sm:pt-4' : 'pt-10 sm:pt-12'}`}>
+      <div className={`container mx-auto flex items-center justify-between py-3 sm:py-4 px-4 transition-all duration-700 ease-in-out ${isScrolled ? 'pt-3 sm:pt-4' : 'pt-10 sm:pt-12'}`}>
         <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-shrink-0">
           <img src="/placeholder.svg" alt="School Logo" className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-white/20 p-2 flex-shrink-0" />
           <div className="min-w-0">
