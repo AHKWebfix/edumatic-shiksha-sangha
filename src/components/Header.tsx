@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 const Header = () => {
   const menuItems = [{
     title: "হোম",
@@ -98,24 +99,27 @@ const Header = () => {
     title: "যোগাযোগ",
     href: "/contact"
   }];
-  return <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
-      {/* Top Info Bar */}
+
+  return (
+    <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
+      {/* Top Info Bar - Fixed for mobile single line */}
       <div className="bg-slate-800/90 py-2">
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm font-medium px-4 gap-2 sm:gap-0">
-          <div className="flex items-center space-x-3 sm:space-x-6">
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="font-semibold">০১৭৮৮-৯৯৮৮৭৭</span>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between text-xs font-medium overflow-hidden">
+            <div className="flex items-center space-x-2 min-w-0 flex-shrink">
+              <div className="flex items-center space-x-1">
+                <Phone className="h-3 w-3 flex-shrink-0" />
+                <span className="font-semibold whitespace-nowrap">০১৭৮৮-৯৯৮৮৭৭</span>
+              </div>
+              <div className="hidden xs:flex items-center space-x-1">
+                <Mail className="h-3 w-3 flex-shrink-0" />
+                <span className="font-semibold whitespace-nowrap">Email</span>
+              </div>
             </div>
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <Mail className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span className="font-semibold hidden sm:inline">info@edumatic.edu.bd</span>
-              <span className="font-semibold sm:hidden">Email</span>
+            <div className="flex items-center space-x-1 min-w-0 flex-shrink">
+              <MapPin className="h-3 w-3 flex-shrink-0" />
+              <span className="font-semibold whitespace-nowrap">ঢাকা, বাংলাদেশ</span>
             </div>
-          </div>
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-            <span className="font-semibold">ঢাকা, বাংলাদেশ</span>
           </div>
         </div>
       </div>
@@ -136,49 +140,65 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden xl:flex items-center space-x-1">
-          {menuItems.map((item, index) => <div key={index} className="relative">
-              {item.submenu ? <DropdownMenu>
+          {menuItems.map((item, index) => (
+            <div key={index} className="relative">
+              {item.submenu ? (
+                <DropdownMenu>
                   <DropdownMenuTrigger className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
                     {item.title}
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-64 bg-white border border-gray-200 shadow-lg">
-                    {item.submenu.map((subItem, subIndex) => <DropdownMenuItem key={subIndex} asChild>
+                    {item.submenu.map((subItem, subIndex) => (
+                      <DropdownMenuItem key={subIndex} asChild>
                         <Link to={subItem.href} className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors cursor-pointer">
                           {subItem.title}
                         </Link>
-                      </DropdownMenuItem>)}
+                      </DropdownMenuItem>
+                    ))}
                   </DropdownMenuContent>
-                </DropdownMenu> : <Link to={item.href} className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
+                </DropdownMenu>
+              ) : (
+                <Link to={item.href} className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white focus:outline-none">
                   {item.title}
-                </Link>}
-            </div>)}
+                </Link>
+              )}
+            </div>
+          ))}
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Made scrollable */}
         <Sheet>
           <SheetTrigger asChild className="xl:hidden">
             <Button variant="ghost" size="sm" className="flex-shrink-0">
               <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-72 sm:w-80">
-            <nav className="flex flex-col space-y-2 mt-8">
-              {menuItems.map((item, index) => <div key={index}>
+          <SheetContent side="right" className="w-72 sm:w-80 overflow-y-auto">
+            <nav className="flex flex-col space-y-2 mt-8 pb-6">
+              {menuItems.map((item, index) => (
+                <div key={index}>
                   <Link to={item.href} className="flex items-center justify-between text-foreground hover:text-primary transition-colors font-semibold py-3 text-sm sm:text-base">
                     {item.title}
                     {item.submenu && <ChevronDown className="h-4 w-4" />}
                   </Link>
-                  {item.submenu && <div className="ml-4 space-y-1">
-                      {item.submenu.map((subItem, subIndex) => <Link key={subIndex} to={subItem.href} className="block text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary py-2">
+                  {item.submenu && (
+                    <div className="ml-4 space-y-1">
+                      {item.submenu.map((subItem, subIndex) => (
+                        <Link key={subIndex} to={subItem.href} className="block text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary py-2">
                           {subItem.title}
-                        </Link>)}
-                    </div>}
-                </div>)}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </nav>
           </SheetContent>
         </Sheet>
       </div>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;
