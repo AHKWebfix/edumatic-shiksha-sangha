@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Users, CheckCircle, Shield } from "lucide-react";
+
 const RecognitionSeats = () => {
   const recognitions = [{
     title: "শিক্ষা বোর্ড স্বীকৃতি",
@@ -47,22 +49,25 @@ const RecognitionSeats = () => {
   }];
   return <div className="min-h-screen bg-background font-anek-bangla">
       <Header />
-      <main className="pt-8 pb-16">
-        <div className="container mx-auto">
-          {/* Page Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-primary mb-4 md:text-3xl">
-              স্বীকৃতি ও আসন সংখ্যা
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              আমাদের প্রতিষ্ঠানের সরকারি স্বীকৃতি ও শ্রেণিভিত্তিক আসন সংখ্যার বিস্তারিত তথ্য
-            </p>
-          </div>
+      
+      <PageHeader
+        title="স্বীকৃতি ও আসন সংখ্যা"
+        subtitle="প্রতিষ্ঠানিক তথ্য"
+        description="আমাদের প্রতিষ্ঠানের সরকারি স্বীকৃতি ও শ্রেণিভিত্তিক আসন সংখ্যার বিস্তারিত তথ্য"
+        icon={<Award />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "আমাদের সম্পর্কে", href: "/about" },
+          { label: "স্বীকৃতি ও আসন সংখ্যা" }
+        ]}
+      />
 
+      <main className="pb-16">
+        <div className="container mx-auto px-4">
           {/* Recognition Section */}
           <div className="mb-16">
             <div className="flex items-center justify-center mb-8">
-              <Award className="h-8 w-8 text-primary mr-3" />
+              <Shield className="h-8 w-8 text-primary mr-3" />
               <h2 className="text-3xl font-bold text-primary">
                 স্বীকৃতি ও পুরস্কার
               </h2>
@@ -138,4 +143,5 @@ const RecognitionSeats = () => {
       <Footer />
     </div>;
 };
+
 export default RecognitionSeats;

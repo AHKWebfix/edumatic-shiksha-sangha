@@ -1,6 +1,6 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   Building, 
@@ -101,18 +101,21 @@ const Infrastructure = () => {
   return (
     <div className="min-h-screen bg-background font-anek-bangla">
       <Header />
-      <main className="pt-8 pb-16">
-        <div className="container mx-auto">
-          {/* Page Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              অবকাঠামো ও সুযোগ-সুবিধা
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              আমাদের প্রতিষ্ঠানের আধুনিক অবকাঠামো ও শিক্ষার্থীদের জন্য বিভিন্ন সুবিধাসমূহ
-            </p>
-          </div>
+      
+      <PageHeader
+        title="অবকাঠামো ও সুযোগ-সুবিধা"
+        subtitle="আধুনিক শিক্ষা পরিবেশ"
+        description="আমাদের প্রতিষ্ঠানের আধুনিক অবকাঠামো ও শিক্ষার্থীদের জন্য বিভিন্ন সুবিধাসমূহ"
+        icon={<Building />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "আমাদের সম্পর্কে", href: "/about" },
+          { label: "অবকাঠামো ও সুবিধা" }
+        ]}
+      />
 
+      <main className="pb-16">
+        <div className="container mx-auto px-4">
           {/* Main Facilities */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-primary text-center mb-8">
@@ -179,6 +182,7 @@ const Infrastructure = () => {
           </div>
         </div>
       </main>
+      
       <Footer />
     </div>
   );

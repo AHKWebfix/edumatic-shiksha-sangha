@@ -1,11 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Users, Trophy, Star, Calendar, Award } from "lucide-react";
+
 const InstituteHistoryPage = () => {
   const timeline = [{
     year: "২০০৫",
-    title: "প্রতিষ্ঠালগ্ন",
+    title: "প্রতিষ্ঠালগ্ন", 
     description: "মাত্র ৫০ জন শিক্ষার্থী ও ১০ জন শিক্ষক নিয়ে যাত্রা শুরু",
     details: "ছোট্ট একটি ভাড়া বাড়িতে প্রাথমিক পর্যায়ে শুরু"
   }, {
@@ -21,7 +23,7 @@ const InstituteHistoryPage = () => {
   }, {
     year: "২০১০",
     title: "নিজস্ব ভবন",
-    description: "৩ তলা নিজস্ว ভবনে স্থানান্তর",
+    description: "৩ তলা নিজস্ব ভবনে স্থানান্তর",
     details: "আধুনিক সুবিধা সহ শ্রেণিকক্ষ ও পাঠাগার"
   }, {
     year: "২০১২",
@@ -54,6 +56,7 @@ const InstituteHistoryPage = () => {
     description: "২০০০+ স্নাতক ও অব্যাহত সাফল্যের যাত্রা",
     details: "আগামীর জন্য নতুন পরিকল্পনা ও লক্ষ্য নির্ধারণ"
   }];
+
   const achievements = [{
     icon: Users,
     title: "২০০০+",
@@ -71,33 +74,37 @@ const InstituteHistoryPage = () => {
     title: "১৯",
     subtitle: "বছরের অভিজ্ঞতা"
   }];
-  return <div className="min-h-screen bg-background font-anek-bangla">
-      <Header />
-      <main className="pt-8 pb-16">
-        <div className="container mx-auto">
-          {/* Page Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-4">
-              <BookOpen className="h-8 w-8 text-primary mr-3" />
-              <h1 className="text-4xl font-bold text-primary md:text-4xl">
-                প্রতিষ্ঠানের ইতিহাস
-              </h1>
-            </div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              ২০০৫ সাল থেকে আজ পর্যন্ত আমাদের গৌরবময় যাত্রাপথ ও অর্জনের ইতিহাস
-            </p>
-          </div>
 
+  return (
+    <div className="min-h-screen bg-background font-anek-bangla">
+      <Header />
+      
+      <PageHeader
+        title="প্রতিষ্ঠানের ইতিহাস"
+        subtitle="আমাদের যাত্রাপথ"
+        description="২০০৫ সাল থেকে আজ পর্যন্ত আমাদের গৌরবময় যাত্রাপথ ও অর্জনের ইতিহাস"
+        icon={<BookOpen />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "আমাদের সম্পর্কে", href: "/about" },
+          { label: "প্রতিষ্ঠানের ইতিহাস" }
+        ]}
+      />
+
+      <main className="pb-16">
+        <div className="container mx-auto px-4">
           {/* Achievement Stats */}
           <div className="mb-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {achievements.map((achievement, index) => <Card key={index} className="bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300">
+              {achievements.map((achievement, index) => (
+                <Card key={index} className="bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-6 text-center">
                     <achievement.icon className="h-12 w-12 mx-auto mb-4" />
                     <div className="text-3xl font-bold mb-2">{achievement.title}</div>
                     <div className="text-sm opacity-90">{achievement.subtitle}</div>
                   </CardContent>
-                </Card>)}
+                </Card>
+              ))}
             </div>
           </div>
 
@@ -107,9 +114,12 @@ const InstituteHistoryPage = () => {
               আমাদের যাত্রাপথ
             </h2>
             <div className="space-y-8">
-              {timeline.map((event, index) => <div key={index} className="relative">
+              {timeline.map((event, index) => (
+                <div key={index} className="relative">
                   {/* Timeline Line */}
-                  {index !== timeline.length - 1 && <div className="absolute left-6 top-20 w-0.5 h-16 bg-primary/30 md:left-1/2 md:transform md:-translate-x-px"></div>}
+                  {index !== timeline.length - 1 && (
+                    <div className="absolute left-6 top-20 w-0.5 h-16 bg-primary/30 md:left-1/2 md:transform md:-translate-x-px"></div>
+                  )}
                   
                   <div className={`flex flex-col md:flex-row items-start md:items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Year Badge */}
@@ -142,7 +152,8 @@ const InstituteHistoryPage = () => {
                     {/* Spacer for alternating layout */}
                     <div className="hidden md:block flex-shrink-0 w-24"></div>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -151,7 +162,7 @@ const InstituteHistoryPage = () => {
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-4">ভবিষ্যতের স্বপ্ন</h2>
               <p className="text-lg leading-relaxed max-w-3xl mx-auto">
-                আমাদের লক্ষ্য হলো আগামী ১০ বছরে দেশের অন্যতম সেরা শিক্ষা প্রতিষ্ঠান হিসেবে 
+                আমাদের লক্ষ্য হলো আগামী ১০ বছরে দেশের অন্যতম শিক্ষা প্রতিষ্ঠান হিসেবে 
                 প্রতিষ্ঠিত হওয়া এবং আন্তর্জাতিক মানের শিক্ষা প্রদান করা। আমরা প্রতিটি শিক্ষার্থীকে 
                 গ্লোবাল সিটিজেন হিসেবে গড়ে তুলতে চাই।
               </p>
@@ -159,7 +170,10 @@ const InstituteHistoryPage = () => {
           </div>
         </div>
       </main>
+      
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default InstituteHistoryPage;
