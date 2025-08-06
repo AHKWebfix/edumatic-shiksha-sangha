@@ -4,11 +4,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const location = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
@@ -20,6 +21,25 @@ const Header = () => {
   const toggleSubmenu = (index: number) => {
     setOpenSubmenu(openSubmenu === index ? null : index);
   };
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 50 && currentScrollY > lastScrollY) {
+        setIsScrolled(true);
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 50) {
+        setIsScrolled(false);
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [{
     title: "হোম",
@@ -119,7 +139,7 @@ const Header = () => {
   return (
     <header className="w-full bg-gradient-to-r from-primary to-primary/90 text-white sticky top-0 z-50">
       {/* Top Info Bar */}
-      <div className="bg-slate-800/90 py-2">
+      <div className={`bg-slate-800/90 py-2 transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-xs font-medium">
             <div className="flex items-center space-x-3 sm:space-x-4">
