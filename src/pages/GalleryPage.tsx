@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Camera, Play, Calendar, Users, Download, Share2 } from "lucide-react";
@@ -81,17 +82,17 @@ const GalleryPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader
+        title="গ্যালারি"
+        description="আমাদের প্রতিষ্ঠানের বিভিন্ন কার্যক্রম, অনুষ্ঠান ও সুযোগ-সুবিধার ছবি ও ভিডিও"
+        icon={<Camera />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "গ্যালারি" }
+        ]}
+      />
+      
       <main className="container mx-auto py-8 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            <Camera className="inline h-8 w-8 mr-3" />
-            গ্যালারি
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            আমাদের প্রতিষ্ঠানের বিভিন্ন কার্যক্রম, অনুষ্ঠান ও সুযোগ-সুবিধার ছবি ও ভিডিও
-          </p>
-        </div>
-
         <Tabs defaultValue="সকল" className="w-full">
           <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-8 h-auto">
             {categories.map((category) => (

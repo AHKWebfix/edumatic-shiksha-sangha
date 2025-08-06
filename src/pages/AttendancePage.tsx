@@ -1,6 +1,6 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,17 +45,17 @@ const AttendancePage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader
+        title="হাজিরা তথ্য"
+        description="শিক্ষার্থীদের উপস্থিতির তথ্য ও পরিসংখ্যান"
+        icon={<UserCheck />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "হাজিরা তথ্য" }
+        ]}
+      />
+      
       <main className="container mx-auto py-8 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            <UserCheck className="inline h-8 w-8 mr-3" />
-            হাজিরা তথ্য
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            শিক্ষার্থীদের উপস্থিতির তথ্য ও পরিসংখ্যান
-          </p>
-        </div>
-
         {/* Daily Stats */}
         <div className="grid md:grid-cols-4 gap-4 mb-8">
           <Card>

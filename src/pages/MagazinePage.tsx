@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Download, Eye, Calendar, Users, FileText, Star } from "lucide-react";
@@ -10,7 +11,7 @@ const MagazinePage = () => {
     {
       id: 1,
       title: "এডুমেটিক বার্ষিকী ২০২৪",
-      year: "২০২৪",
+      year: "২০২৪", 
       edition: "১৫তম সংস্করণ",
       thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop",
       pages: 120,
@@ -24,7 +25,7 @@ const MagazinePage = () => {
       id: 2,
       title: "শিক্ষা ও সংস্কৃতি ২০২৩",
       year: "২০২৩",
-      edition: "১৪তম সংস্করণ",
+      edition: "১৪তম সংস্করণ", 
       thumbnail: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h:400&fit=crop",
       pages: 108,
       articles: 42,
@@ -59,17 +60,17 @@ const MagazinePage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <PageHeader
+        title="প্রতিষ্ঠান স্মরণিকা"
+        description="আমাদের প্রতিষ্ঠানের বার্ষিক ম্যাগাজিন ও স্মরণিকা, যেখানে রয়েছে শিক্ষার্থী ও শিক্ষকদের সৃজনশীল রচনা"
+        icon={<BookOpen />}
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "প্রতিষ্ঠান স্মরণিকা" }
+        ]}
+      />
+      
       <main className="container mx-auto py-4 sm:py-8 px-4">
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
-            <BookOpen className="inline h-6 w-6 sm:h-8 sm:w-8 mr-2 sm:mr-3" />
-            প্রতিষ্ঠান স্মরণিকা
-          </h1>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            আমাদের প্রতিষ্ঠানের বার্ষিক ম্যাগাজিন ও স্মরণিকা, যেখানে রয়েছে শিক্ষার্থী ও শিক্ষকদের সৃজনশীল রচনা
-          </p>
-        </div>
-
         {/* Featured Magazine */}
         {magazines.filter(m => m.featured).map(magazine => (
           <Card key={magazine.id} className="mb-6 sm:mb-8 border-primary/30 shadow-lg">
