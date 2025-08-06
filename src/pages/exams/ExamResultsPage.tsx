@@ -12,10 +12,10 @@ import PageHeader from "@/components/PageHeader";
 
 const ExamResultsPage = () => {
   const resultStats = [
-    { title: "মোট পরীক্ষার্থী", count: "৮৫০", icon: <Users className="h-6 w-6" /> },
-    { title: "A+ গ্রেড", count: "১২৫", icon: <Trophy className="h-6 w-6" /> },
-    { title: "পাসের হার", count: "৯৮.৫%", icon: <TrendingUp className="h-6 w-6" /> },
-    { title: "সর্বোচ্চ GPA", count: "৫.০০", icon: <Award className="h-6 w-6" /> }
+    { title: "মোট পরীক্ষার্থী", count: "৮৫০", icon: <Users className="h-5 w-5 sm:h-6 sm:w-6" /> },
+    { title: "A+ গ্রেড", count: "১২৫", icon: <Trophy className="h-5 w-5 sm:h-6 sm:w-6" /> },
+    { title: "পাসের হার", count: "৯৮.৫%", icon: <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6" /> },
+    { title: "সর্বোচ্চ GPA", count: "৫.০০", icon: <Award className="h-5 w-5 sm:h-6 sm:w-6" /> }
   ];
 
   const topStudents = [
@@ -53,20 +53,20 @@ const ExamResultsPage = () => {
       />
 
       {/* Result Statistics */}
-      <section className="py-16 bg-accent/10">
+      <section className="py-8 sm:py-12 lg:py-16 bg-accent/10">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">ফলাফল পরিসংখ্যান</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-primary mb-8 sm:mb-12">ফলাফল পরিসংখ্যান</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-5xl mx-auto">
             {resultStats.map((stat, index) => (
               <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow">
-                <CardHeader className="pb-2">
+                <CardHeader className="pb-2 p-3 sm:p-6">
                   <div className="flex justify-center text-primary mb-2">
                     {stat.icon}
                   </div>
-                  <CardTitle className="text-2xl font-bold text-primary">{stat.count}</CardTitle>
+                  <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">{stat.count}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground font-medium">{stat.title}</p>
+                <CardContent className="p-3 sm:p-6 pt-0">
+                  <p className="text-xs sm:text-sm lg:text-base text-muted-foreground font-medium">{stat.title}</p>
                 </CardContent>
               </Card>
             ))}
@@ -75,34 +75,40 @@ const ExamResultsPage = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="search" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="search">ফলাফল অনুসন্ধান</TabsTrigger>
-                <TabsTrigger value="toppers">মেধাবী ছাত্র-ছাত্রী</TabsTrigger>
-                <TabsTrigger value="statistics">গ্রেড বিতরণ</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
+                <TabsTrigger value="search" className="text-xs sm:text-sm py-2 sm:py-1.5 px-2 sm:px-3 data-[state=active]:text-xs sm:data-[state=active]:text-sm">
+                  ফলাফল অনুসন্ধান
+                </TabsTrigger>
+                <TabsTrigger value="toppers" className="text-xs sm:text-sm py-2 sm:py-1.5 px-2 sm:px-3 data-[state=active]:text-xs sm:data-[state=active]:text-sm">
+                  মেধাবী ছাত্র-ছাত্রী
+                </TabsTrigger>
+                <TabsTrigger value="statistics" className="text-xs sm:text-sm py-2 sm:py-1.5 px-2 sm:px-3 data-[state=active]:text-xs sm:data-[state=active]:text-sm">
+                  গ্রেড বিতরণ
+                </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="search" className="mt-8">
+              <TabsContent value="search" className="mt-4 sm:mt-6 lg:mt-8">
                 <Card className="shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <Search className="h-6 w-6 mr-2" />
+                  <CardHeader className="p-4 sm:p-6">
+                    <CardTitle className="flex items-center text-lg sm:text-xl lg:text-2xl">
+                      <Search className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2" />
                       ব্যক্তিগত ফলাফল অনুসন্ধান
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">রোল নম্বর</label>
-                        <Input placeholder="রোল নম্বর লিখুন" />
+                        <label className="text-xs sm:text-sm font-medium">রোল নম্বর</label>
+                        <Input placeholder="রোল নম্বর লিখুন" className="text-xs sm:text-sm" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">শ্রেণি</label>
+                        <label className="text-xs sm:text-sm font-medium">শ্রেণি</label>
                         <Select>
-                          <SelectTrigger>
+                          <SelectTrigger className="text-xs sm:text-sm">
                             <SelectValue placeholder="শ্রেণি নির্বাচন করুন" />
                           </SelectTrigger>
                           <SelectContent>
@@ -115,9 +121,9 @@ const ExamResultsPage = () => {
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium">পরীক্ষার ধরন</label>
+                        <label className="text-xs sm:text-sm font-medium">পরীক্ষার ধরন</label>
                         <Select>
-                          <SelectTrigger>
+                          <SelectTrigger className="text-xs sm:text-sm">
                             <SelectValue placeholder="পরীক্ষা নির্বাচন করুন" />
                           </SelectTrigger>
                           <SelectContent>
@@ -128,41 +134,41 @@ const ExamResultsPage = () => {
                         </Select>
                       </div>
                       <div className="flex items-end">
-                        <Button className="w-full flex items-center space-x-2">
-                          <Search className="h-4 w-4" />
+                        <Button className="w-full flex items-center space-x-2 text-xs sm:text-sm py-2 h-auto sm:h-10">
+                          <Search className="h-3 w-3 sm:h-4 sm:w-4" />
                           <span>ফলাফল খুঁজুন</span>
                         </Button>
                       </div>
                     </div>
 
-                    <div className="p-6 bg-gray-50 rounded-lg text-center">
-                      <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">ফলাফল অনুসন্ধানের জন্য উপরের তথ্য পূরণ করুন</p>
+                    <div className="p-4 sm:p-6 bg-gray-50 rounded-lg text-center">
+                      <Search className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-sm sm:text-base text-gray-600">ফলাফল অনুসন্ধানের জন্য উপরের তথ্য পূরণ করুন</p>
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              <TabsContent value="toppers" className="mt-8">
+              <TabsContent value="toppers" className="mt-4 sm:mt-6 lg:mt-8">
                 <Card className="shadow-lg">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="flex items-center">
-                        <Trophy className="h-6 w-6 mr-2" />
+                  <CardHeader className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <CardTitle className="flex items-center text-lg sm:text-xl lg:text-2xl">
+                        <Trophy className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2" />
                         মেধাতালিকা - বার্ষিক পরীক্ষা ২০২৪
                       </CardTitle>
-                      <Button className="flex items-center space-x-2">
-                        <Download className="h-4 w-4" />
+                      <Button className="flex items-center space-x-2 text-xs sm:text-sm py-2 h-auto sm:h-10 w-full sm:w-auto">
+                        <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                         <span>মেধাতালিকা ডাউনলোড</span>
                       </Button>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="space-y-3 sm:space-y-4">
                       {topStudents.map((student, index) => (
-                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
-                          <div className="flex items-center space-x-4">
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                        <div key={index} className="flex items-center justify-between p-3 sm:p-4 border rounded-lg hover:bg-accent/10 transition-colors">
+                          <div className="flex items-center space-x-3 sm:space-x-4">
+                            <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-sm sm:text-base ${
                               student.position === 1 ? 'bg-yellow-100 text-yellow-700' :
                               student.position === 2 ? 'bg-gray-100 text-gray-700' :
                               student.position === 3 ? 'bg-orange-100 text-orange-700' :
@@ -171,13 +177,13 @@ const ExamResultsPage = () => {
                               {student.position}
                             </div>
                             <div>
-                              <h3 className="font-semibold text-primary text-lg">{student.name}</h3>
-                              <p className="text-sm text-muted-foreground">{student.class} - শাখা {student.section}</p>
+                              <h3 className="font-semibold text-primary text-sm sm:text-base lg:text-lg">{student.name}</h3>
+                              <p className="text-xs sm:text-sm text-muted-foreground">{student.class} - শাখা {student.section}</p>
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="text-2xl font-bold text-primary">{student.gpa}</div>
-                            <Badge variant="outline" className="bg-green-50 text-green-700">
+                            <div className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">{student.gpa}</div>
+                            <Badge variant="outline" className="bg-green-50 text-green-700 text-xs">
                               GPA
                             </Badge>
                           </div>
@@ -188,27 +194,27 @@ const ExamResultsPage = () => {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="statistics" className="mt-8">
+              <TabsContent value="statistics" className="mt-4 sm:mt-6 lg:mt-8">
                 <Card className="shadow-lg">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="flex items-center">
-                        <TrendingUp className="h-6 w-6 mr-2" />
+                  <CardHeader className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                      <CardTitle className="flex items-center text-lg sm:text-xl lg:text-2xl">
+                        <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2" />
                         গ্রেড বিতরণ - বার্ষিক পরীক্ষা ২০২৪
                       </CardTitle>
-                      <Button className="flex items-center space-x-2">
-                        <Download className="h-4 w-4" />
+                      <Button className="flex items-center space-x-2 text-xs sm:text-sm py-2 h-auto sm:h-10 w-full sm:w-auto">
+                        <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                         <span>পরিসংখ্যান ডাউনলোড</span>
                       </Button>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div className="space-y-4">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                      <div className="space-y-3 sm:space-y-4">
                         {gradeDistribution.map((grade, index) => (
-                          <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                            <div className="flex items-center space-x-4">
-                              <div className={`w-12 h-12 rounded-lg flex items-center justify-center font-bold text-white ${
+                          <div key={index} className="flex items-center justify-between p-3 sm:p-4 border rounded-lg">
+                            <div className="flex items-center space-x-3 sm:space-x-4">
+                              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center font-bold text-white text-sm sm:text-base ${
                                 grade.grade === 'A+' ? 'bg-green-500' :
                                 grade.grade === 'A' ? 'bg-blue-500' :
                                 grade.grade === 'A-' ? 'bg-indigo-500' :
@@ -220,11 +226,11 @@ const ExamResultsPage = () => {
                                 {grade.grade}
                               </div>
                               <div>
-                                <div className="text-lg font-semibold">{grade.count} জন</div>
-                                <div className="text-sm text-muted-foreground">{grade.percentage}</div>
+                                <div className="text-base sm:text-lg font-semibold">{grade.count} জন</div>
+                                <div className="text-xs sm:text-sm text-muted-foreground">{grade.percentage}</div>
                               </div>
                             </div>
-                            <div className="w-24 bg-gray-200 rounded-full h-2">
+                            <div className="w-16 sm:w-20 lg:w-24 bg-gray-200 rounded-full h-2">
                               <div 
                                 className={`h-2 rounded-full ${
                                   grade.grade === 'A+' ? 'bg-green-500' :
@@ -242,28 +248,28 @@ const ExamResultsPage = () => {
                         ))}
                       </div>
                       
-                      <div className="space-y-6">
+                      <div className="space-y-4 sm:space-y-6">
                         <Card className="border border-green-200 bg-green-50">
-                          <CardContent className="p-6">
-                            <h4 className="font-semibold text-green-700 mb-2">সফলতার হার</h4>
-                            <div className="text-3xl font-bold text-green-600">৯৮.২%</div>
-                            <p className="text-sm text-green-600">মোট ৮৩৫ জন পরীক্ষায় উত্তীর্ণ</p>
+                          <CardContent className="p-4 sm:p-6">
+                            <h4 className="font-semibold text-green-700 mb-2 text-sm sm:text-base">সফলতার হার</h4>
+                            <div className="text-2xl sm:text-3xl font-bold text-green-600">৯৮.২%</div>
+                            <p className="text-xs sm:text-sm text-green-600">মোট ৮৩৫ জন পরীক্ষায় উত্তীর্ণ</p>
                           </CardContent>
                         </Card>
                         
                         <Card className="border border-blue-200 bg-blue-50">
-                          <CardContent className="p-6">
-                            <h4 className="font-semibold text-blue-700 mb-2">গড় GPA</h4>
-                            <div className="text-3xl font-bold text-blue-600">৩.৮৫</div>
-                            <p className="text-sm text-blue-600">গতবারের চেয়ে ০.১৫ বেশি</p>
+                          <CardContent className="p-4 sm:p-6">
+                            <h4 className="font-semibold text-blue-700 mb-2 text-sm sm:text-base">গড় GPA</h4>
+                            <div className="text-2xl sm:text-3xl font-bold text-blue-600">৩.৮৫</div>
+                            <p className="text-xs sm:text-sm text-blue-600">গতবারের চেয়ে ০.১৫ বেশি</p>
                           </CardContent>
                         </Card>
 
                         <Card className="border border-purple-200 bg-purple-50">
-                          <CardContent className="p-6">
-                            <h4 className="font-semibold text-purple-700 mb-2">শ্রেষ্ঠত্বের হার</h4>
-                            <div className="text-3xl font-bold text-purple-600">৩৮.২%</div>
-                            <p className="text-sm text-purple-600">A- এর উপরে গ্রেড প্রাপ্ত</p>
+                          <CardContent className="p-4 sm:p-6">
+                            <h4 className="font-semibold text-purple-700 mb-2 text-sm sm:text-base">শ্রেষ্ঠত্বের হার</h4>
+                            <div className="text-2xl sm:text-3xl font-bold text-purple-600">৩৮.২%</div>
+                            <p className="text-xs sm:text-sm text-purple-600">A- এর উপরে গ্রেড প্রাপ্ত</p>
                           </CardContent>
                         </Card>
                       </div>
