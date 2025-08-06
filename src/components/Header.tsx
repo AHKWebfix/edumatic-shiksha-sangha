@@ -4,15 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
+  const [openSubmenu, setOpenSubmenu] = useState<number | null>(null);
 
   const isActiveRoute = (href: string, submenu?: any[]) => {
     if (submenu) {
       return submenu.some(item => location.pathname === item.href);
     }
     return location.pathname === href;
+  };
+
+  const toggleSubmenu = (index: number) => {
+    setOpenSubmenu(openSubmenu === index ? null : index);
   };
 
   const menuItems = [{
@@ -116,14 +123,15 @@ const Header = () => {
       <div className="bg-slate-800/90 py-2">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between text-xs font-medium">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 sm:space-x-4">
               <div className="flex items-center space-x-1">
                 <Phone className="h-3 w-3 flex-shrink-0" />
                 <span className="font-semibold">০১৭৮৮-৯৯৮৮৭৭</span>
               </div>
-              <div className="hidden sm:flex items-center space-x-1">
+              <div className="flex items-center space-x-1">
                 <Mail className="h-3 w-3 flex-shrink-0" />
-                <span className="font-semibold">info@edumatic.edu.bd</span>
+                <span className="font-semibold hidden xs:inline">info@edumatic.edu.bd</span>
+                <span className="font-semibold xs:hidden">info@edumatic</span>
               </div>
             </div>
             <div className="flex items-center space-x-1">
@@ -185,21 +193,27 @@ const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-72 sm:w-80 overflow-y-auto max-h-screen">
-            <nav className="flex flex-col space-y-2 mt-8 pb-6">
+            <nav className="flex flex-col space-y-1 mt-8 pb-6">
               {menuItems.map((item, index) => (
                 <div key={index}>
-                  <Link to={item.href} className={`flex items-center justify-between text-foreground hover:text-primary transition-colors font-semibold py-3 text-sm sm:text-base ${isActiveRoute(item.href, item.submenu) ? 'text-primary font-bold' : ''}`}>
-                    {item.title}
-                    {item.submenu && <ChevronDown className="h-4 w-4" />}
-                  </Link>
-                  {item.submenu && (
-                    <div className="ml-4 space-y-1">
-                      {item.submenu.map((subItem, subIndex) => (
-                        <Link key={subIndex} to={subItem.href} className={`block text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary py-2 ${location.pathname === subItem.href ? 'text-primary font-semibold' : ''}`}>
-                          {subItem.title}
-                        </Link>
-                      ))}
-                    </div>
+                  {item.submenu ? (
+                    <Collapsible open={openSubmenu === index} onOpenChange={() => toggleSubmenu(index)}>
+                      <CollapsibleTrigger className={`flex items-center justify-between w-full text-left px-3 py-3 rounded-md text-foreground hover:text-primary hover:bg-accent/50 transition-colors font-semibold text-sm sm:text-base ${isActiveRoute(item.href, item.submenu) ? 'bg-primary/10 text-primary font-bold' : ''}`}>
+                        <span>{item.title}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openSubmenu === index ? 'rotate-180' : ''}`} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="space-y-1 mt-1">
+                        {item.submenu.map((subItem, subIndex) => (
+                          <Link key={subIndex} to={subItem.href} className={`block ml-4 px-3 py-2 rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary hover:bg-accent/50 transition-colors ${location.pathname === subItem.href ? 'bg-primary/10 text-primary font-semibold' : ''}`}>
+                            {subItem.title}
+                          </Link>
+                        ))}
+                      </CollapsibleContent>
+                    </Collapsible>
+                  ) : (
+                    <Link to={item.href} className={`flex items-center px-3 py-3 rounded-md text-foreground hover:text-primary hover:bg-accent/50 transition-colors font-semibold text-sm sm:text-base ${isActiveRoute(item.href) ? 'bg-primary/10 text-primary font-bold' : ''}`}>
+                      {item.title}
+                    </Link>
                   )}
                 </div>
               ))}
