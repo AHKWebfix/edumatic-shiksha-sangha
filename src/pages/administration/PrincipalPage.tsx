@@ -1,13 +1,10 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { User, Mail, Phone, Award, Calendar, GraduationCap, BookOpen, Users } from "lucide-react";
-
 const PrincipalPage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+  return <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <Header />
       
       <main className="container mx-auto px-4 py-8">
@@ -77,15 +74,15 @@ const PrincipalPage = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">পিএইচডি ইন এডুকেশন</h3>
+                <h3 className="font-semibold text-primary text-lg">পিএইচডি ইন এডুকেশন</h3>
                 <p className="text-sm text-muted-foreground">ঢাকা বিশ্ববিদ্যালয় (২০১৫)</p>
               </div>
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">এমএড (শিক্ষা বিষয়ে স্নাতকোত্তর)</h3>
+                <h3 className="font-semibold text-primary text-lg">এমএড (শিক্ষা বিষয়ে স্নাতকোত্তর)</h3>
                 <p className="text-sm text-muted-foreground">ঢাকা বিশ্ববিদ্যালয় (২০০৫)</p>
               </div>
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">বিএড (শিক্ষা বিষয়ে স্নাতক)</h3>
+                <h3 className="font-semibold text-primary text-lg">বিএড (শিক্ষা বিষয়ে স্নাতক)</h3>
                 <p className="text-sm text-muted-foreground">জাতীয় বিশ্ববিদ্যালয় (২০০২)</p>
               </div>
             </CardContent>
@@ -100,15 +97,15 @@ const PrincipalPage = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">শ্রেষ্ঠ শিক্ষক পুরস্কার</h3>
+                <h3 className="font-semibold text-primary text-lg">শ্রেষ্ঠ শিক্ষক পুরস্কার</h3>
                 <p className="text-sm text-muted-foreground">শিক্ষা মন্ত্রণালয়, বাংলাদেশ (২০২১)</p>
               </div>
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">গবেষণা পুরস্কার</h3>
+                <h3 className="font-semibold text-primary text-lg">গবেষণা পুরস্কার</h3>
                 <p className="text-sm text-muted-foreground">বাংলাদেশ শিক্ষা গবেষণা পরিষদ (২০১৯)</p>
               </div>
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-primary">শিক্ষা উন্নয়ন পুরস্কার</h3>
+                <h3 className="font-semibold text-primary text-lg">শিক্ষা উন্নয়ন পুরস্কার</h3>
                 <p className="text-sm text-muted-foreground">জেলা প্রশাসন, ঢাকা (২০২০)</p>
               </div>
             </CardContent>
@@ -138,8 +135,6 @@ const PrincipalPage = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default PrincipalPage;
