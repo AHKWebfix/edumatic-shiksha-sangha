@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Globe, Facebook, Youtube, Clock } from "lucide-react";
 
@@ -128,7 +129,15 @@ const Footer = () => {
           
           <div className="text-center mt-4 sm:mt-6">
             <p className="text-xs text-slate-50">
-              Design & Developed by Ahasanul Haque Khairul l 01881591312
+              Design & Developed by{" "}
+              <a 
+                href="https://wa.me/8801881591312" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-white underline transition-colors"
+              >
+                Ahasanul Haque Khairul l 01881591312
+              </a>
             </p>
           </div>
         </div>
