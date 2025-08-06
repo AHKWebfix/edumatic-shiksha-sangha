@@ -5,6 +5,7 @@ import { Calendar, Download, Clock, AlertCircle, CheckCircle } from "lucide-reac
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const AcademicCalendarPage = () => {
   const academicEvents = [
@@ -138,18 +139,17 @@ const AcademicCalendarPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
-        <div className="container mx-auto text-center px-4">
-          <div className="flex items-center justify-center mb-6">
-            <Calendar className="h-12 w-12 mr-4" />
-            <h1 className="text-4xl md:text-6xl font-bold">একাডেমিক ক্যালেন্ডার</h1>
-          </div>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            শিক্ষাবর্ষের সম্পূর্ণ কার্যক্রম ও গুরুত্বপূর্ণ তারিখসমূহ
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="একাডেমিক ক্যালেন্ডার"
+        subtitle="একাডেমিক"
+        description="শিক্ষাবর্ষের সম্পূর্ণ কার্যক্রম ও গুরুত্বপূর্ণ তারিখসমূহ"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "একাডেমিক" },
+          { label: "একাডেমিক ক্যালেন্ডার" }
+        ]}
+        icon={<Calendar />}
+      />
 
       {/* Quick Stats */}
       <section className="py-16 bg-accent/10">

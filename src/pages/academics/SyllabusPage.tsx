@@ -5,6 +5,7 @@ import { Download, BookOpen, FileText, GraduationCap } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const SyllabusPage = () => {
   const subjects = {
@@ -64,18 +65,17 @@ const SyllabusPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
-        <div className="container mx-auto text-center px-4">
-          <div className="flex items-center justify-center mb-6">
-            <BookOpen className="h-12 w-12 mr-4" />
-            <h1 className="text-4xl md:text-6xl font-bold">সিলেবাস ও কারিকুলাম</h1>
-          </div>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            আধুনিক ও মানসম্মত শিক্ষাক্রম এবং বিস্তারিত সিলেবাস
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="সিলেবাস ও কারিকুলাম"
+        subtitle="একাডেমিক"
+        description="আধুনিক ও মানসম্মত শিক্ষাক্রম এবং বিস্তারিত সিলেবাস"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "একাডেমিক" },
+          { label: "সিলেবাস ও কারিকুলাম" }
+        ]}
+        icon={<BookOpen />}
+      />
 
       {/* Curriculum Features */}
       <section className="py-16 bg-accent/10">

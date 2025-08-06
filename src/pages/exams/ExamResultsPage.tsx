@@ -3,367 +3,279 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
+import { Search, Download, Trophy, TrendingUp, Users, Award } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trophy, Search, Download, FileText, Award, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const ExamResultsPage = () => {
-  const recentResults = [
-    {
-      exam: "বার্ষিক পরীক্ষা ২০২৪",
-      class: "দশম শ্রেণি",
-      section: "বিজ্ঞান বিভাগ",
-      publishDate: "১৫ ডিসেম্বর ২০২ৄ",
-      totalStudents: 120,
-      passRate: "৯৫%",
-      status: "প্রকাশিত"
-    },
-    {
-      exam: "অর্ধবার্ষিক পরীক্ষা ২০২ৄ",
-      class: "নবম শ্রেণি",
-      section: "সকল বিভাগ",
-      publishDate: "১০ নভেম্বর ২০২৪",
-      totalStudents: 95,
-      passRate: "৯২%",
-      status: "প্রকাশিত"
-    },
-    {
-      exam: "তৃতীয় সাময়িক পরীক্ষা",
-      class: "অষ্টম শ্রেণি",
-      section: "সকল বিষয়",
-      publishDate: "২৮ অক্টোবর ২০২৪",
-      totalStudents: 87,
-      passRate: "৮৮%",
-      status: "প্রকাশিত"
-    }
+  const resultStats = [
+    { title: "মোট পরীক্ষার্থী", count: "৮৫০", icon: <Users className="h-6 w-6" /> },
+    { title: "A+ গ্রেড", count: "১২৫", icon: <Trophy className="h-6 w-6" /> },
+    { title: "পাসের হার", count: "৯৮.৫%", icon: <TrendingUp className="h-6 w-6" /> },
+    { title: "সর্বোচ্চ GPA", count: "৫.০০", icon: <Award className="h-6 w-6" /> }
   ];
 
-  const topPerformers = [
-    {
-      name: "সাকিব হাসান",
-      roll: "০১",
-      class: "দশম শ্রেণি",
-      gpa: "৫.০০",
-      position: 1,
-      subjects: {
-        bangla: "৮০",
-        english: "৭৮",
-        math: "৮০",
-        science: "৭৯",
-        social: "৮০"
-      }
-    },
-    {
-      name: "তানিয়া আক্তার",
-      roll: "০৫",
-      class: "দশম শ্রেণি",
-      gpa: "ৄ.৯৫",
-      position: 2,
-      subjects: {
-        bangla: "৭৯",
-        english: "৭৭",
-        math: "৮০",
-        science: "৭৮",
-        social: "৭৯"
-      }
-    },
-    {
-      name: "রাহুল দাস",
-      roll: "১২",
-      class: "নবম শ্রেণি",
-      gpa: "৪.৯০",
-      position: 3,
-      subjects: {
-        bangla: "৭৮",
-        english: "৭৬",
-        math: "৭৯",
-        science: "৭৭",
-        social: "৭৮"
-      }
-    }
+  const topStudents = [
+    { position: 1, name: "রাহুল আহমেদ", class: "দশম শ্রেণি", gpa: "৫.০০", section: "A" },
+    { position: 2, name: "সারা খান", class: "দশম শ্রেণি", gpa: "৫.০০", section: "B" },
+    { position: 3, name: "তানভীর হাসান", class: "নবম শ্রেণি", gpa: "৪.৯৫", section: "A" },
+    { position: 4, name: "নুসরাত জাহান", class: "নবম শ্রেণি", gpa: "৪.৯২", section: "C" },
+    { position: 5, name: "মাহমুদুল হক", class: "অষ্টম শ্রেণি", gpa: "৪.৯০", section: "B" }
   ];
 
-  const classWiseResults = [
-    { class: "দশম শ্রেণি", totalStudents: 120, passed: 114, failed: 6, passRate: "৯৫%" },
-    { class: "নবম শ্রেণি", totalStudents: 95, passed: 87, failed: 8, passRate: "৯২%" },
-    { class: "অষ্টম শ্রেণি", totalStudents: 87, passed: 76, failed: 11, passRate: "৮৭%" },
-    { class: "সপ্তম শ্রেণি", totalStudents: 92, passed: 85, failed: 7, passRate: "৯২%" },
-    { class: "ষষ্ঠ শ্রেণি", totalStudents: 78, passed: 73, failed: 5, passRate: "৯৪%" }
+  const gradeDistribution = [
+    { grade: "A+", count: 125, percentage: "14.7%" },
+    { grade: "A", count: 200, percentage: "23.5%" },
+    { grade: "A-", count: 180, percentage: "21.2%" },
+    { grade: "B", count: 150, percentage: "17.6%" },
+    { grade: "C", count: 100, percentage: "11.8%" },
+    { grade: "D", count: 80, percentage: "9.4%" },
+    { grade: "F", count: 15, percentage: "1.8%" }
   ];
-
-  const getPositionColor = (position: number) => {
-    switch (position) {
-      case 1: return "bg-yellow-500";
-      case 2: return "bg-gray-400";
-      case 3: return "bg-amber-600";
-      default: return "bg-primary";
-    }
-  };
 
   return (
-    <div className="min-h-screen bg-background font-anek-bangla">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="py-16">
-        <div className="container mx-auto">
-          {/* Page Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-4">
-              <Trophy className="h-8 w-8 text-primary mr-3" />
-              <h1 className="text-3xl md:text-4xl font-bold text-primary">
-                পরীক্ষার ফলাফল
-              </h1>
-            </div>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              সকল পরীক্ষার ফলাফল এবং পারফরমেন্স বিশ্লেষণ
-            </p>
+      <PageHeader
+        title="পরীক্ষার ফলাফল"
+        subtitle="পরীক্ষা"
+        description="অভ্যন্তরীণ পরীক্ষার ফলাফল এবং পরিসংখ্যান"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "পরীক্ষা" },
+          { label: "পরীক্ষার ফলাফল" }
+        ]}
+        icon={<Trophy />}
+      />
+
+      {/* Result Statistics */}
+      <section className="py-16 bg-accent/10">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-primary mb-12">ফলাফল পরিসংখ্যান</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {resultStats.map((stat, index) => (
+              <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader className="pb-2">
+                  <div className="flex justify-center text-primary mb-2">
+                    {stat.icon}
+                  </div>
+                  <CardTitle className="text-2xl font-bold text-primary">{stat.count}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground font-medium">{stat.title}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-
-          <Tabs defaultValue="search" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="search" className="flex items-center space-x-2">
-                <Search className="h-4 w-4" />
-                <span>ফলাফল খোঁজ</span>
-              </TabsTrigger>
-              <TabsTrigger value="recent" className="flex items-center space-x-2">
-                <FileText className="h-4 w-4" />
-                <span>সাম্প্রতিক ফলাফল</span>
-              </TabsTrigger>
-              <TabsTrigger value="toppers" className="flex items-center space-x-2">
-                <Award className="h-4 w-4" />
-                <span>সেরা ফলাফল</span>
-              </TabsTrigger>
-              <TabsTrigger value="statistics" className="flex items-center space-x-2">
-                <Users className="h-4 w-4" />
-                <span>পরিসংখ্যান</span>
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="search" className="space-y-6">
-              <Card className="shadow-lg border-primary/20">
-                <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-                  <CardTitle className="flex items-center">
-                    <Search className="h-5 w-5 mr-2" />
-                    ব্যক্তিগত ফলাফল খোঁজ করুন
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        শ্রেণি নির্বাচন করুন
-                      </label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="শ্রেণি নির্বাচন করুন" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="6">ষষ্ঠ শ্রেণি</SelectItem>
-                          <SelectItem value="7">সপ্তম শ্রেণি</SelectItem>
-                          <SelectItem value="8">অষ্টম শ্রেণি</SelectItem>
-                          <SelectItem value="9">নবম শ্রেণি</SelectItem>
-                          <SelectItem value="10">দশম শ্রেণি</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        পরীক্ষা নির্বাচন করুন
-                      </label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="পরীক্ষা নির্বাচন করুন" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="annual">বার্ষিক পরীক্ষা</SelectItem>
-                          <SelectItem value="half-yearly">অর্ধবার্ষিক পরীক্ষা</SelectItem>
-                          <SelectItem value="test3">তৃতীয় সাময়িক</SelectItem>
-                          <SelectItem value="test2">দ্বিতীয় সাময়িক</SelectItem>
-                          <SelectItem value="test1">প্রথম সাময়িক</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        রোল নম্বর
-                      </label>
-                      <Input 
-                        placeholder="রোল নম্বর লিখুন" 
-                        type="number"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        সেশন
-                      </label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="সেশন নির্বাচন করুন" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="2024">২০২৪</SelectItem>
-                          <SelectItem value="2023">২০২৩</SelectItem>
-                          <SelectItem value="2022">২০২২</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full" size="lg">
-                    <Search className="h-4 w-4 mr-2" />
-                    ফলাফল দেখুন
-                  </Button>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="recent" className="space-y-6">
-              <div className="grid gap-6">
-                {recentResults.map((result, index) => (
-                  <Card key={index} className="shadow-lg border-primary/20">
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <CardTitle className="text-primary text-xl">{result.exam}</CardTitle>
-                          <p className="text-muted-foreground mt-1">
-                            {result.class} - {result.section}
-                          </p>
-                        </div>
-                        <Badge className="bg-green-500 text-white">
-                          {result.status}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-4 gap-4 mb-4">
-                        <div className="text-center p-4 bg-accent/10 rounded-lg">
-                          <p className="text-2xl font-bold text-primary">{result.totalStudents}</p>
-                          <p className="text-sm text-muted-foreground">মোট শিক্ষার্থী</p>
-                        </div>
-                        <div className="text-center p-4 bg-accent/10 rounded-lg">
-                          <p className="text-2xl font-bold text-green-600">{result.passRate}</p>
-                          <p className="text-sm text-muted-foreground">পাশের হার</p>
-                        </div>
-                        <div className="text-center p-4 bg-accent/10 rounded-lg">
-                          <p className="text-2xl font-bold text-blue-600">{result.publishDate}</p>
-                          <p className="text-sm text-muted-foreground">প্রকাশের তারিখ</p>
-                        </div>
-                        <div className="text-center p-4 bg-accent/10 rounded-lg">
-                          <Button variant="outline" size="sm">
-                            <Download className="h-4 w-4 mr-2" />
-                            ডাউনলোড
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="toppers" className="space-y-6">
-              <div className="grid gap-6">
-                {topPerformers.map((student, index) => (
-                  <Card key={index} className="shadow-lg border-primary/20">
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${getPositionColor(student.position)}`}>
-                            {student.position}
-                          </div>
-                          <div>
-                            <CardTitle className="text-primary">{student.name}</CardTitle>
-                            <p className="text-muted-foreground">
-                              রোল: {student.roll} | {student.class}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-bold text-primary">{student.gpa}</div>
-                          <div className="text-sm text-muted-foreground">GPA</div>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-5 gap-4">
-                        <div className="text-center p-3 bg-accent/10 rounded">
-                          <p className="font-semibold text-primary">{student.subjects.bangla}</p>
-                          <p className="text-xs text-muted-foreground">বাংলা</p>
-                        </div>
-                        <div className="text-center p-3 bg-accent/10 rounded">
-                          <p className="font-semibold text-primary">{student.subjects.english}</p>
-                          <p className="text-xs text-muted-foreground">ইংরেজি</p>
-                        </div>
-                        <div className="text-center p-3 bg-accent/10 rounded">
-                          <p className="font-semibold text-primary">{student.subjects.math}</p>
-                          <p className="text-xs text-muted-foreground">গণিত</p>
-                        </div>
-                        <div className="text-center p-3 bg-accent/10 rounded">
-                          <p className="font-semibold text-primary">{student.subjects.science}</p>
-                          <p className="text-xs text-muted-foreground">বিজ্ঞান</p>
-                        </div>
-                        <div className="text-center p-3 bg-accent/10 rounded">
-                          <p className="font-semibold text-primary">{student.subjects.social}</p>
-                          <p className="text-xs text-muted-foreground">সামাজিক</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="statistics" className="space-y-6">
-              <Card className="shadow-lg border-primary/20">
-                <CardHeader className="bg-gradient-to-r from-primary to-primary/90 text-white">
-                  <CardTitle className="flex items-center">
-                    <Users className="h-5 w-5 mr-2" />
-                    শ্রেণিভিত্তিক ফলাফলের পরিসংখ্যান
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="bg-accent/20">
-                        <tr>
-                          <th className="text-left p-4 font-semibold">শ্রেণি</th>
-                          <th className="text-left p-4 font-semibold">মোট শিক্ষার্থী</th>
-                          <th className="text-left p-4 font-semibold">পাশ</th>
-                          <th className="text-left p-4 font-semibold">ফেইল</th>
-                          <th className="text-left p-4 font-semibold">পাশের হার</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {classWiseResults.map((result, index) => (
-                          <tr key={index} className={index % 2 === 0 ? "bg-accent/5" : "bg-white"}>
-                            <td className="p-4 font-medium text-primary">{result.class}</td>
-                            <td className="p-4 text-foreground">{result.totalStudents}</td>
-                            <td className="p-4 text-green-600 font-semibold">{result.passed}</td>
-                            <td className="p-4 text-red-600 font-semibold">{result.failed}</td>
-                            <td className="p-4">
-                              <Badge className="bg-primary text-white">
-                                {result.passRate}
-                              </Badge>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
         </div>
-      </main>
-      
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <Tabs defaultValue="search" className="w-full">
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="search">ফলাফল অনুসন্ধান</TabsTrigger>
+                <TabsTrigger value="toppers">মেধাবী ছাত্র-ছাত্রী</TabsTrigger>
+                <TabsTrigger value="statistics">গ্রেড বিতরণ</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="search" className="mt-8">
+                <Card className="shadow-lg">
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Search className="h-6 w-6 mr-2" />
+                      ব্যক্তিগত ফলাফল অনুসন্ধান
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">রোল নম্বর</label>
+                        <Input placeholder="রোল নম্বর লিখুন" />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">শ্রেণি</label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="শ্রেণি নির্বাচন করুন" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="6">ষষ্ঠ শ্রেণি</SelectItem>
+                            <SelectItem value="7">সপ্তম শ্রেণি</SelectItem>
+                            <SelectItem value="8">অষ্টম শ্রেণি</SelectItem>
+                            <SelectItem value="9">নবম শ্রেণি</SelectItem>
+                            <SelectItem value="10">দশম শ্রেণি</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">পরীক্ষার ধরন</label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="পরীক্ষা নির্বাচন করুন" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="half-yearly">ষাণ্মাসিক</SelectItem>
+                            <SelectItem value="yearly">বার্ষিক</SelectItem>
+                            <SelectItem value="test">টেস্ট পরীক্ষা</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="flex items-end">
+                        <Button className="w-full flex items-center space-x-2">
+                          <Search className="h-4 w-4" />
+                          <span>ফলাফল খুঁজুন</span>
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="p-6 bg-gray-50 rounded-lg text-center">
+                      <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">ফলাফল অনুসন্ধানের জন্য উপরের তথ্য পূরণ করুন</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="toppers" className="mt-8">
+                <Card className="shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="flex items-center">
+                        <Trophy className="h-6 w-6 mr-2" />
+                        মেধাতালিকা - বার্ষিক পরীক্ষা ২০২৪
+                      </CardTitle>
+                      <Button className="flex items-center space-x-2">
+                        <Download className="h-4 w-4" />
+                        <span>মেধাতালিকা ডাউনলোড</span>
+                      </Button>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {topStudents.map((student, index) => (
+                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
+                          <div className="flex items-center space-x-4">
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                              student.position === 1 ? 'bg-yellow-100 text-yellow-700' :
+                              student.position === 2 ? 'bg-gray-100 text-gray-700' :
+                              student.position === 3 ? 'bg-orange-100 text-orange-700' :
+                              'bg-blue-100 text-blue-700'
+                            }`}>
+                              {student.position}
+                            </div>
+                            <div>
+                              <h3 className="font-semibold text-primary text-lg">{student.name}</h3>
+                              <p className="text-sm text-muted-foreground">{student.class} - শাখা {student.section}</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-2xl font-bold text-primary">{student.gpa}</div>
+                            <Badge variant="outline" className="bg-green-50 text-green-700">
+                              GPA
+                            </Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="statistics" className="mt-8">
+                <Card className="shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="flex items-center">
+                        <TrendingUp className="h-6 w-6 mr-2" />
+                        গ্রেড বিতরণ - বার্ষিক পরীক্ষা ২০২৪
+                      </CardTitle>
+                      <Button className="flex items-center space-x-2">
+                        <Download className="h-4 w-4" />
+                        <span>পরিসংখ্যান ডাউনলোড</span>
+                      </Button>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        {gradeDistribution.map((grade, index) => (
+                          <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
+                            <div className="flex items-center space-x-4">
+                              <div className={`w-12 h-12 rounded-lg flex items-center justify-center font-bold text-white ${
+                                grade.grade === 'A+' ? 'bg-green-500' :
+                                grade.grade === 'A' ? 'bg-blue-500' :
+                                grade.grade === 'A-' ? 'bg-indigo-500' :
+                                grade.grade === 'B' ? 'bg-yellow-500' :
+                                grade.grade === 'C' ? 'bg-orange-500' :
+                                grade.grade === 'D' ? 'bg-red-400' :
+                                'bg-red-600'
+                              }`}>
+                                {grade.grade}
+                              </div>
+                              <div>
+                                <div className="text-lg font-semibold">{grade.count} জন</div>
+                                <div className="text-sm text-muted-foreground">{grade.percentage}</div>
+                              </div>
+                            </div>
+                            <div className="w-24 bg-gray-200 rounded-full h-2">
+                              <div 
+                                className={`h-2 rounded-full ${
+                                  grade.grade === 'A+' ? 'bg-green-500' :
+                                  grade.grade === 'A' ? 'bg-blue-500' :
+                                  grade.grade === 'A-' ? 'bg-indigo-500' :
+                                  grade.grade === 'B' ? 'bg-yellow-500' :
+                                  grade.grade === 'C' ? 'bg-orange-500' :
+                                  grade.grade === 'D' ? 'bg-red-400' :
+                                  'bg-red-600'
+                                }`}
+                                style={{ width: grade.percentage }}
+                              ></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="space-y-6">
+                        <Card className="border border-green-200 bg-green-50">
+                          <CardContent className="p-6">
+                            <h4 className="font-semibold text-green-700 mb-2">সফলতার হার</h4>
+                            <div className="text-3xl font-bold text-green-600">৯৮.২%</div>
+                            <p className="text-sm text-green-600">মোট ৮৩৫ জন পরীক্ষায় উত্তীর্ণ</p>
+                          </CardContent>
+                        </Card>
+                        
+                        <Card className="border border-blue-200 bg-blue-50">
+                          <CardContent className="p-6">
+                            <h4 className="font-semibold text-blue-700 mb-2">গড় GPA</h4>
+                            <div className="text-3xl font-bold text-blue-600">৩.৮৫</div>
+                            <p className="text-sm text-blue-600">গতবারের চেয়ে ০.১৫ বেশি</p>
+                          </CardContent>
+                        </Card>
+
+                        <Card className="border border-purple-200 bg-purple-50">
+                          <CardContent className="p-6">
+                            <h4 className="font-semibold text-purple-700 mb-2">শ্রেষ্ঠত্বের হার</h4>
+                            <div className="text-3xl font-bold text-purple-600">৩৮.২%</div>
+                            <p className="text-sm text-purple-600">A- এর উপরে গ্রেড প্রাপ্ত</p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

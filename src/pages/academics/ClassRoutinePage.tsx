@@ -2,10 +2,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Download, Clock, BookOpen, Calendar } from "lucide-react";
+import { Download, Clock, BookOpen } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 
 const ClassRoutinePage = () => {
   const routineData = [
@@ -24,18 +25,17 @@ const ClassRoutinePage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
-        <div className="container mx-auto text-center px-4">
-          <div className="flex items-center justify-center mb-6">
-            <Clock className="h-12 w-12 mr-4" />
-            <h1 className="text-4xl md:text-6xl font-bold">শ্রেণি রুটিন</h1>
-          </div>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            সকল শ্রেণির দৈনিক ক্লাস রুটিন ও সময়সূচি
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="শ্রেণি রুটিন"
+        subtitle="একাডেমিক"
+        description="সকল শ্রেণির দৈনিক ক্লাস রুটিন ও সময়সূচি"
+        breadcrumb={[
+          { label: "হোম", href: "/" },
+          { label: "একাডেমিক" },
+          { label: "শ্রেণি রুটিন" }
+        ]}
+        icon={<Clock />}
+      />
 
       {/* Main Content */}
       <section className="py-16">
@@ -137,7 +137,7 @@ const ClassRoutinePage = () => {
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-primary">
-                    <Calendar className="h-5 w-5 mr-2" />
+                    <Clock className="h-5 w-5 mr-2" />
                     গুরুত্বপূর্ণ তথ্য
                   </CardTitle>
                 </CardHeader>
