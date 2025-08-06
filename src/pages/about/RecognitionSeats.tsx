@@ -1,74 +1,57 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Users, CheckCircle, Shield } from "lucide-react";
-
 const RecognitionSeats = () => {
-  const recognitions = [
-    {
-      title: "শিক্ষা বোর্ড স্বীকৃতি",
-      description: "মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড কর্তৃক স্বীকৃতিপ্রাপ্ত",
-      year: "২০০৫"
-    },
-    {
-      title: "সরকারি নিবন্ধন",
-      description: "শিক্ষা মন্ত্রণালয় কর্তৃক নিবন্ধিত শিক্ষা প্রতিষ্ঠান",
-      year: "২০০৬"
-    },
-    {
-      title: "শ্রেষ্ঠ প্রতিষ্ঠান পুরস্কার",
-      description: "জেলা পর্যায়ে শ্রেষ্ঠ শিক্ষা প্রতিষ্ঠানের পুরস্কার",
-      year: "২০১৮"
-    },
-    {
-      title: "গুণগত শিক্ষার স্বীকৃতি",
-      description: "জাতীয় পর্যায়ে গুণগত শিক্ষার জন্য স্বীকৃতি",
-      year: "২০২০"
-    }
-  ];
-
-  const seatInfo = [
-    {
-      grade: "প্লে গ্রুপ - নার্সারি",
-      seats: "৮০",
-      shift: "সকাল শাখা"
-    },
-    {
-      grade: "শ্রেণি ১ - শ্রেণি ৫",
-      seats: "৩০০",
-      shift: "সকাল ও দিন শাখা"
-    },
-    {
-      grade: "শ্রেণি ৬ - শ্রেণি ১০",
-      seats: "৪০০",
-      shift: "সকাল ও দিন শাখা"
-    },
-    {
-      grade: "একাদশ - দ্বাদশ (বিজ্ঞান)",
-      seats: "১২০",
-      shift: "সকাল শাখা"
-    },
-    {
-      grade: "একাদশ - দ্বাদশ (ব্যবসায়)",
-      seats: "১০০",
-      shift: "সকাল শাখা"
-    },
-    {
-      grade: "একাদশ - দ্বাদশ (মানবিক)",
-      seats: "৮০",
-      shift: "সকাল শাখা"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background font-anek-bangla">
+  const recognitions = [{
+    title: "শিক্ষা বোর্ড স্বীকৃতি",
+    description: "মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড কর্তৃক স্বীকৃতিপ্রাপ্ত",
+    year: "২০০৫"
+  }, {
+    title: "সরকারি নিবন্ধন",
+    description: "শিক্ষা মন্ত্রণালয় কর্তৃক নিবন্ধিত শিক্ষা প্রতিষ্ঠান",
+    year: "২০০৬"
+  }, {
+    title: "শ্রেষ্ঠ প্রতিষ্ঠান পুরস্কার",
+    description: "জেলা পর্যায়ে শ্রেষ্ঠ শিক্ষা প্রতিষ্ঠানের পুরস্কার",
+    year: "২০১৮"
+  }, {
+    title: "গুণগত শিক্ষার স্বীকৃতি",
+    description: "জাতীয় পর্যায়ে গুণগত শিক্ষার জন্য স্বীকৃতি",
+    year: "২০২০"
+  }];
+  const seatInfo = [{
+    grade: "প্লে গ্রুপ - নার্সারি",
+    seats: "৮০",
+    shift: "সকাল শাখা"
+  }, {
+    grade: "শ্রেণি ১ - শ্রেণি ৫",
+    seats: "৩০০",
+    shift: "সকাল ও দিন শাখা"
+  }, {
+    grade: "শ্রেণি ৬ - শ্রেণি ১০",
+    seats: "৪০০",
+    shift: "সকাল ও দিন শাখা"
+  }, {
+    grade: "একাদশ - দ্বাদশ (বিজ্ঞান)",
+    seats: "১২০",
+    shift: "সকাল শাখা"
+  }, {
+    grade: "একাদশ - দ্বাদশ (ব্যবসায়)",
+    seats: "১০০",
+    shift: "সকাল শাখা"
+  }, {
+    grade: "একাদশ - দ্বাদশ (মানবিক)",
+    seats: "৮০",
+    shift: "সকাল শাখা"
+  }];
+  return <div className="min-h-screen bg-background font-anek-bangla">
       <Header />
       <main className="pt-8 pb-16">
         <div className="container mx-auto">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h1 className="text-4xl font-bold text-primary mb-4 md:text-3xl">
               স্বীকৃতি ও আসন সংখ্যা
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -85,8 +68,7 @@ const RecognitionSeats = () => {
               </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              {recognitions.map((item, index) => (
-                <Card key={index} className="bg-gradient-to-br from-primary/5 to-accent/10 border-primary/20 shadow-lg">
+              {recognitions.map((item, index) => <Card key={index} className="bg-gradient-to-br from-primary/5 to-accent/10 border-primary/20 shadow-lg">
                   <CardHeader>
                     <div className="flex items-center space-x-3">
                       <Shield className="h-6 w-6 text-primary" />
@@ -101,8 +83,7 @@ const RecognitionSeats = () => {
                       {item.description}
                     </p>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </div>
 
@@ -125,8 +106,7 @@ const RecognitionSeats = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {seatInfo.map((item, index) => (
-                      <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                    {seatInfo.map((item, index) => <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                         <td className="px-6 py-4 font-medium text-foreground">
                           {item.grade}
                         </td>
@@ -138,8 +118,7 @@ const RecognitionSeats = () => {
                         <td className="px-6 py-4 text-center text-muted-foreground">
                           {item.shift}
                         </td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
               </div>
@@ -157,8 +136,6 @@ const RecognitionSeats = () => {
         </div>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default RecognitionSeats;
