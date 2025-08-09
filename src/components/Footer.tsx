@@ -1,13 +1,9 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Globe, Facebook, Youtube, Clock } from "lucide-react";
-
 const Footer = () => {
   const quickLinks = ["মূলপাতা", "আমাদের সম্পর্কে", "একাডেমিক তথ্য", "ভর্তি প্রক্রিয়া", "নোটিশ বোর্ড", "পরীক্ষার ফলাফল", "গ্যালারি", "যোগাযোগ"];
   const academicInfo = ["ক্লাস রুটিন", "পরীক্ষার রুটিন", "বার্ষিক ক্যালেন্ডার", "সিলেবাস", "বইয়ের তালিকা", "অ্যাসাইনমেন্ট"];
-
-  return (
-    <footer className="bg-gradient-to-br from-primary to-primary/90 text-white">
+  return <footer className="bg-gradient-to-br from-primary to-primary/90 text-white">
       <div className="container mx-auto py-12 sm:py-16 px-4">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:gap-8">
           {/* School Info */}
@@ -46,13 +42,11 @@ const Footer = () => {
           <div>
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">দ্রুত লিঙ্ক</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
+              {quickLinks.map((link, index) => <li key={index}>
                   <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">
                     {link}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -60,13 +54,11 @@ const Footer = () => {
           <div>
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">একাডেমিক তথ্য</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {academicInfo.map((link, index) => (
-                <li key={index}>
+              {academicInfo.map((link, index) => <li key={index}>
                   <a href="#" className="text-white/80 hover:text-white transition-colors text-sm">
                     {link}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -87,7 +79,7 @@ const Footer = () => {
               
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white/60" />
-                <span className="text-white/80 text-sm">০১৭৮৮-৯৯৮৮৭৭</span>
+                <span className="text-white/80 text-sm">০১৮৮১-৫৯১৩১২</span>
               </div>
               
               <div className="flex items-center space-x-3">
@@ -130,20 +122,13 @@ const Footer = () => {
           <div className="text-center mt-4 sm:mt-6">
             <p className="text-xs text-slate-50">
               Design & Developed by{" "}
-              <a 
-                href="https://wa.me/8801881591312" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-white underline transition-colors"
-              >
+              <a href="https://wa.me/8801881591312" target="_blank" rel="noopener noreferrer" className="hover:text-white underline transition-colors">
                 Ahasanul Haque Khairul l 01881591312
               </a>
             </p>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
